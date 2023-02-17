@@ -25,9 +25,10 @@ export class EditIngredientComponent implements OnInit {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.formeditIngredient = this.formBuilder.group({
       id_ingredient:['',Validators.required],
-      nomingredients:['',Validators.required],
-      quantite:['',Validators.required],
       id_recette:['',Validators.required],
+      quantiteingredient:['',Validators.required],
+
+
 
     })
     //récupere le produit via l'id

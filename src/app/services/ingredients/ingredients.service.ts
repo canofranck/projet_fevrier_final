@@ -29,7 +29,7 @@ export class IngredientsService {
    }
 
    deleteIngredient(id:number){
-    return this.http.delete(AppSettings.APP_URL+"/ingredient/"+id);
+    return this.http.delete(AppSettings.APP_URL+"/ingredients/"+id);
    }
 
   }
