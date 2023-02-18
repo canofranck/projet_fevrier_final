@@ -1,3 +1,4 @@
+import { PostrecetteComponent } from './../../postrecette/postrecette.component';
 import { Ingredients } from 'src/app/models/ingredients/ingredients';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -40,7 +41,9 @@ export class AddIngredientComponent implements OnInit{
 
       this.ingredientService.saveIngredient(ingredient).subscribe((response) => {
         console.log(response);
-        this.router.navigate(['ingredient'])
+
+         window.location.reload() ;
+        //  this.router.navigate(['ingredient'])
        });
        }
       }

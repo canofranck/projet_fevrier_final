@@ -216,22 +216,7 @@
 
                               <!-- <label>Ingredients:</label> -->
                               <label for="ingredients">Ingrédients :</label>
-                              <div *ngIf="showForm"></div>
-                              <table>
-                                <tr *ngFor="let item of selectedIngredients; let i = index">
-                                  <td>
-                                    <select (change)="onSelectChange(item)" name="ingredients" [(ngModel)]="item.id_ingredient">
-                                      <option *ngFor="let ing of ingredient" [value]="ing.id_ingredient">{{ing.nomingredients}}</option>
-                                    </select>
-                                  </td>
-                                  <td>
-                                    <input type="number" [(ngModel)]="item.quantite" name="quantite" />
-                                  </td>
-                                  <td>
-                                    <button *ngIf="i == selectedIngredients.length - 1" (click)="addIngredient()">Ajouter un autre ingrédient</button>
-                                  </td>
-                                </tr>
-                              </table>
+                              <app-add-ingredient></app-add-ingredient>
 
 
 
