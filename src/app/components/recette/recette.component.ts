@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { RecetteService } from "src/app/services/recette/recette.service";
+import { ListIngredientComponent } from "../ingredients/list-ingredient/list-ingredient.component";
 
 @Component({
   selector: 'app-recette',
@@ -25,6 +26,7 @@ getRecettes() {
     data =>{
       console.table(data);
         this.recettes = data as any[];
+        console.log(this.recettes)
     }
   );
 }

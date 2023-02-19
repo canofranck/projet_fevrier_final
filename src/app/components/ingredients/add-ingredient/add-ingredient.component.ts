@@ -41,8 +41,10 @@ export class AddIngredientComponent implements OnInit{
 
       this.ingredientService.saveIngredient(ingredient).subscribe((response) => {
         console.log(response);
+        this.formaddIngredient.reset()
+      
 
-         window.location.reload() ;
+        //  window.location.reload() ;
         //  this.router.navigate(['ingredient'])
        });
        }
