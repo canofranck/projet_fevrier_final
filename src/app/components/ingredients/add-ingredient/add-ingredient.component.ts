@@ -1,6 +1,6 @@
 import { PostrecetteComponent } from './../../postrecette/postrecette.component';
 import { Ingredients } from 'src/app/models/ingredients/ingredients';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { IngredientsService } from 'src/app/services/ingredients/ingredients.service';
@@ -13,6 +13,11 @@ import { IngredientsService } from 'src/app/services/ingredients/ingredients.ser
 export class AddIngredientComponent implements OnInit{
   declare formaddIngredient: FormGroup;
   declare ingredient:Ingredients
+  declare listeingredient : any ;
+  @Input()
+  addingre!: boolean;
+  @Output()
+   public   cacheringre:EventEmitter<any> =new EventEmitter<any>();
 
   constructor (
     private ingredientService: IngredientsService,
@@ -28,6 +33,12 @@ export class AddIngredientComponent implements OnInit{
 
 
         })
+        this.ingredientService.findAllIngredients().subscribe(
+          data =>{
+            console.table(data);
+              this.listeingredient = data;
+          }
+        )
   }
   create(){
 
@@ -38,14 +49,12 @@ export class AddIngredientComponent implements OnInit{
       ingredient.id_recette = this.formaddIngredient.value.id_recette
       ingredient.quantiteingredient = this.formaddIngredient.value.quantiteingredient;
 
-
       this.ingredientService.saveIngredient(ingredient).subscribe((response) => {
         console.log(response);
-        this.formaddIngredient.reset()
-      
+          this.formaddIngredient.reset();
+          this.listeingredient.push(response as Ingredients);
+         this.cacheringre.emit({});
 
-        //  window.location.reload() ;
-        //  this.router.navigate(['ingredient'])
        });
        }
       }

@@ -25,7 +25,7 @@
 </ul>
 <br>
 <br> -->
-<H2 class="text-center">Créer un ingredient</H2>
+<H2 class="text-center">Ajouter un ingredient</H2>
 <div class="container border">
     <form [formGroup]="formaddIngredient" (ngSubmit)="create()">
         <div class="form-group">
@@ -43,10 +43,24 @@
                 <input type="text" name="" id="quantiteingredient" class="form-control" formControlName="quantiteingredient" data-length="255">
             </div>
             </div>
-        <button class="btn btn-success" type="submit">Soumettre</button>
+        <!-- <button class="btn btn-success" type="submit">Soumettre</button> -->
+        <button type="submit" class="btn-upload"><i class="flaticon-add-plus-button"></i>Enregistrer</button>
     </form>
-  
+
     <br>
+    <ul class="list-group list-group-light">
+      <tr *ngFor="let item of listeingredient">
+      <li >{{item.quantiteingredient}}</li>
+      </tr>
+    </ul>
 </div>
+
+
+
+
+
+
+
+
 {{formaddIngredient.value | json}}
 

@@ -1,100 +1,7 @@
 
-<div class="container">
-  <div>
-
-
-      <!-- <app-list-recette></app-list-recette> -->
-
-  </div>
-
-
-
-</div>
 
 <body>
-  <!-- <div class="row">
-    <form class=" col s12"[formGroup]="form"(ngSubmit)="create() " action="post">
-      <div class="row">
-        <div class="Input-field col s16">
-          <label for ="titre_recette">titre_recette</label>
-            <input id="titre_recette" type="text" formControlName="titre_recette" data-length="255">
 
-        </div>
-      </div>
-      <div class="row">
-        <div class="Input-field col s16">
-          <label for ="date_recette">date_recette</label>
-            <input id="date_recette" type="text" formControlName="date_recette" data-length="20">
-
-        </div>
-      </div>
-      <div class="row">
-        <div class="Input-field col s16">
-          <label for ="description_recette">description_recette</label>
-            <input id="description_recette" type="text" formControlName="description_recette" data-length="10">
-
-        </div>
-      </div>
-      <div class="row">
-        <div class="Input-field col s16">
-          <label for ="categorie_recette"> categorie_recette</label>
-            <input id="categorie_recette" type="text" formControlName="categorie_recette" data-length="10">
-
-        </div>
-      </div>
-      <div class="row">
-        <div class="Input-field col s16">
-          <label for ="niveaudifficulte_recette">niveaudifficulte_recette</label>
-            <input id="niveaudifficulte_recette" type="text" formControlName="niveaudifficulte_recette" data-length="10">
-
-        </div>
-      </div>
-      <div class="row">
-        <div class="Input-field col s16">
-          <label for ="tempspreparation_recette">tempspreparation_recette</label>
-            <input id="tempspreparation_recette" type="text" formControlName="tempspreparation_recette" data-length="10">
-
-        </div>
-      </div>
-      <div class="row">
-        <div class="Input-field col s16">
-          <label for ="tempscuisson_recette">tempscuisson_recette</label>
-            <input id="tempscuisson_recette" type="text" formControlName="tempscuisson_recette" data-length="10">
-
-        </div>
-      </div>
-      <div class="row">
-        <div class="Input-field col s16">
-          <label for ="tempstotal_recette">tempstotal_recette</label>
-            <input id="tempstotal_recette" type="text" formControlName="tempstotal_recette" data-length="10">
-
-        </div>
-      </div>
-      <div class="row">
-        <div class="Input-field col s16">
-          <label for ="nbpersonne_recette">nbpersonne_recette</label>
-            <input id="nbpersonne_recette" type="text" formControlName="nbpersonne_recette" data-length="10">
-
-        </div>
-      </div>
-      <div class="row">
-        <div class="Input-field col s16">
-          <label for ="recettepremium_recette">recettepremium_recette</label>
-            <input id="recettepremium_recette" type="text" formControlName="recettepremium_recette" data-length="10">
-
-        </div>
-      </div>
-      <div class="row">
-        <div class="Input-field col s16">
-          <label for ="id_utilisateur">id_utilisateur</label>
-            <input id="id_utilisateur" type="text" formControlName="id_utilisater" data-length="10">
-
-        </div>
-      </div>
-      <button type="submit">Soumettre</button>
-    </form>
-
-  </div> -->
 
 
     <!--[if lte IE 9]>
@@ -215,8 +122,11 @@
                             <div class="additional-input-wrap">
 
                               <!-- <label>Ingredients:</label> -->
-                              <label for="ingredients">Ingrédients :</label>
-                              <app-add-ingredient></app-add-ingredient>
+                              <!-- <label for="ingredients">Ingrédients :</label> -->
+
+                              <button type="button" class="btn-upload" (click)="affingre()" ><i class="flaticon-add-plus-button"></i>ADD NEW
+                                INGREDIENT</button>
+                              <app-add-ingredient *ngIf="addingre" (cacheringre)="cacheringr()"></app-add-ingredient>
 
 
 
@@ -250,8 +160,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <button type="submit" class="btn-upload"><i class="flaticon-add-plus-button"></i>ADD NEW
-                                    INGREDIENT</button>
+                                <!-- <button type="submit" class="btn-upload"><i class="flaticon-add-plus-button"></i>ADD NEW
+                                    INGREDIENT</button> -->
                             </div>
 
                             <div class="form-group">

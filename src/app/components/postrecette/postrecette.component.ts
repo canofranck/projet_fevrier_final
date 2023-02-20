@@ -18,7 +18,7 @@ export class PostrecetteComponent implements OnInit{
   declare form: FormGroup;
   declare ingredient : any ;
   declare formaddIngredient : FormGroup;
-
+  addingre=false;
 
 
   constructor (
@@ -61,24 +61,16 @@ export class PostrecetteComponent implements OnInit{
       }
     );
   }
-  // onSelectChange(selectedIngredient: Recetteingredient) {
-  //   const index = this.selectedIngredients.indexOf(selectedIngredient);
-  //   this.selectedIngredients[index].id_ingredient = selectedIngredient.id_ingredient;
-  // }
-  // onSelectChange(ingredient: Ingredients) {
-  //   if (this.selectedIngredients.includes(ingredient)) {
-  //     let selectedIngredients = this.ingredient.filter(function(ingredient: { selected: boolean; }) {
-  //       return ingredient.selected == true;
-  //     });
-  //   } else {
-  //     this.selectedIngredients.push(ingredient);
-  //   }
-  // }
-  // addIngredient() {
-    // this.selectedIngredients.push({id_recetteingredients: 0, quantite: '', id_recette: 0, id_ingredient: 1})
-  // }
+  affingre() {
+    this.addingre=true;
 
+  }
 
+  cacheringr(){
+    console.log("coucouc")
+this.addingre=false;
+
+  }
 
   }
 
