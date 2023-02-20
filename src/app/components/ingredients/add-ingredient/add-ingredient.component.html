@@ -29,14 +29,14 @@
 <div class="container border">
     <form [formGroup]="formaddIngredient" (ngSubmit)="create()">
         <div class="form-group">
-            <div class="input-field col s16">
+            <!-- <div class="input-field col s16">
                 <label for="id_ingredient">id_ingredient</label>
                 <input type="text" name="" id="id_ingredient" class="form-control" formControlName="id_ingredient" data-length="255">
-            </div>
+            </div> -->
             <div class="input-field col s16">
               <label for="id_recette">id_recette</label>
               <input type="text" name="" id="id_recette" class="form-control" formControlName="id_recette" data-length="255">
-          </div>
+           </div>
 
             <div class="input-field col s16">
                 <label for="quantiteingredient">quantiteingredient</label>
@@ -44,8 +44,13 @@
             </div>
             </div>
         <!-- <button class="btn btn-success" type="submit">Soumettre</button> -->
-        <button type="submit" class="btn-upload"><i class="flaticon-add-plus-button"></i>Enregistrer</button>
-    </form>
+
+            <div class="col-12">
+        <button type="submit" class="btn-upload"><i class="flaticon-add-plus-button"></i>Enregistrer l'ingredient</button>
+        <button type="button" class="btn-upload" (click)="cahingre()" ><i class="flaticon-add-plus-button"></i>Liste des ingrdients fini</button>
+      </div>
+
+      </form>
 
     <br>
     <ul class="list-group list-group-light">
@@ -53,8 +58,8 @@
       <li >{{item.quantiteingredient}}</li>
       </tr>
     </ul>
-</div>
 
+</div>
 
 
 

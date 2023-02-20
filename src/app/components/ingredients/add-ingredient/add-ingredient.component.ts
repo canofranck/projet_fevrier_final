@@ -53,9 +53,12 @@ export class AddIngredientComponent implements OnInit{
         console.log(response);
           this.formaddIngredient.reset();
           this.listeingredient.push(response as Ingredients);
-         this.cacheringre.emit({});
+        //
 
        });
+       }
+       cahingre(){
+        this.cacheringre.emit({});
        }
       }
 

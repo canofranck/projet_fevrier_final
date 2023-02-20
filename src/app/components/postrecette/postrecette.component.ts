@@ -50,6 +50,7 @@ export class PostrecetteComponent implements OnInit{
 
 
         })
+        
 
   }
   create(){
