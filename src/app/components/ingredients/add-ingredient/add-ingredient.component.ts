@@ -14,8 +14,12 @@ export class AddIngredientComponent implements OnInit{
   declare formaddIngredient: FormGroup;
   declare ingredient:Ingredients
   declare listeingredient : any ;
+  declare tableauingredient: [];
   @Input()
-  addingre!: boolean;
+  addingree!: boolean;
+  @Input()
+  idrecetteencourss! : number;
+
   @Output()
    public   cacheringre:EventEmitter<any> =new EventEmitter<any>();
 
@@ -39,6 +43,8 @@ export class AddIngredientComponent implements OnInit{
               this.listeingredient = data;
           }
         )
+        console.log(" id recette dans ingrdients"+this.idrecetteencourss)
+        console.log(" addingred true or false : "+this.addingree)
   }
   create(){
 
@@ -46,9 +52,9 @@ export class AddIngredientComponent implements OnInit{
     const ingredient = new Ingredients();
 
       ingredient.id_ingredient = this.formaddIngredient.value.id_ingredient;
-      ingredient.id_recette = this.formaddIngredient.value.id_recette
+      ingredient.id_recette = this.formaddIngredient.value.id_recetteidrecetteencours
       ingredient.quantiteingredient = this.formaddIngredient.value.quantiteingredient;
-
+      console.log(" id recette dans ingrdients"+this.idrecetteencourss)
       this.ingredientService.saveIngredient(ingredient).subscribe((response) => {
         console.log(response);
           this.formaddIngredient.reset();

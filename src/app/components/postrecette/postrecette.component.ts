@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 
 import { IngredientsService } from 'src/app/services/ingredients/ingredients.service';
 import { RecetteService } from 'src/app/services/recette/recette.service';
+import { Recette } from 'src/app/models/recette/recette';
 
 
 @Component({
@@ -20,6 +21,9 @@ export class PostrecetteComponent implements OnInit{
   declare formaddIngredient : FormGroup;
   addingre=false;
   afficheretape=false;
+  declare recettes : any ;
+  declare idrecetteencours : number;
+
 
 
   constructor (
@@ -30,38 +34,46 @@ export class PostrecetteComponent implements OnInit{
 
   ){}
     ngOnInit(): void {
-        this.form = this.formBuilder.group({
-          titre_recette: new FormControl(''),
-          date_recette:new FormControl(''),
-          description_recette:new FormControl(''),
-          categorie_recette:new FormControl(''),
-          niveaudifficulte_recette:new FormControl(''),
-          tempspreparation_recette:new FormControl(''),
-          tempscuisson_recette:new FormControl(''),
-          tempstotal_recette:new FormControl(''),
-          nbpersonne_recette:new FormControl(''),
-          recettepremium_recette:new FormControl(''),
-          id_utilisateur:new FormControl('1'),
-        });
+
 
         this.formaddIngredient = this.formBuilder.group({
-          id_ingredient:['',Validators.required],
+          // id_ingredient:['',Validators.required],
           id_recette:['',Validators.required],
           quantiteingredient:['',Validators.required],
-
-
         })
 
+        this.form = this.formBuilder.group({
 
+          titre_recette: [''],
+          date_recette:[new Date()],
+          description_recette:[''],
+          categorie_recette:[''],
+          niveaudifficulte_recette:[''],
+          tempspreparation_recette:[''],
+          tempscuisson_recette:[''],
+          tempstotal_recette:[''],
+          nbpersonne_recette:[''],
+          recettepremium_recette:[''],
+          id_utilisateur:['1'],
+        });
+        this.recetteService.findAllRecettes().subscribe(
+          data =>{
+          console.log(data);
+              this.recettes = Object.values(data);
+             this.recettes.sort((a: { date_recette: number; }, b: { date_recette: number; }) => (a.date_recette < b.date_recette ? 1 : -1))
+              console.log(this.recettes);
+              this.idrecetteencours=this.recettes[0].id_recette;
+              console.log(this.idrecetteencours);
+            }
+        )
   }
   create(){
-
-    console.log(this.form.value);
-    this.recetteService.saveRecette(this.form.value).subscribe(
+  console.table(this.form.value)
+     this.recetteService.saveRecette(this.form.value).subscribe(
       () =>{
         this.router.navigate(['postrecette']);
       }
-    );
+     );
   }
   affingre() {
     this.addingre=true;
