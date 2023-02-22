@@ -19,7 +19,7 @@ export class PostrecetteComponent implements OnInit{
   declare ingredient : any ;
   declare formaddIngredient : FormGroup;
   addingre=false;
-  addetapes=false;
+  afficheretape=false;
 
 
   constructor (
@@ -51,7 +51,7 @@ export class PostrecetteComponent implements OnInit{
 
 
         })
-        console.log(this.addetapes);
+
 
   }
   create(){
@@ -65,20 +65,20 @@ export class PostrecetteComponent implements OnInit{
   }
   affingre() {
     this.addingre=true;
-
+    console.log(this.addingre);
   }
 
   cacheringr(){
-    console.log("coucouc")
-this.addingre=false;
+
+  this.addingre=false;
 
   }
   affetapes() {
-    this.addetapes=true;
-    console.log(this.addetapes);
+    this.afficheretape=true;
+    console.log(this.afficheretape);
   }
   cachetape(){
-    this.addetapes=false;
+    this.afficheretape=false;
   }
 
   }

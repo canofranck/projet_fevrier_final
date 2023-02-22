@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { EtapeService } from 'src/app/services/etape/etape.service';
@@ -11,6 +11,10 @@ import { RecetteService } from 'src/app/services/recette/recette.service';
 })
 export class AddEtapeComponent implements OnInit{
   declare formaddEtape: FormGroup;
+  @Input()
+  afficheretape!: boolean;
+  @Output()
+   public   cacheretape:EventEmitter<any> =new EventEmitter<any>();
   constructor (
     private etapeService: EtapeService,
     private recetteService : RecetteService,
@@ -52,5 +56,9 @@ export class AddEtapeComponent implements OnInit{
         // Afficher un message d'erreur à l'utilisateur
       }
     );
+  }
+  cachertape(){
+
+    this.cacheretape.emit({});
   }
   }
