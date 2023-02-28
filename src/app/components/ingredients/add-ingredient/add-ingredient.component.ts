@@ -4,7 +4,8 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { IngredientsService } from 'src/app/services/ingredients/ingredients.service';
-
+import { RecetteService } from 'src/app/services/recette/recette.service';
+// import { RecetteService } from 'src/app/services/recette/recette.service';
 @Component({
   selector: 'app-add-ingredient',
   templateUrl: './add-ingredient.component.html',
@@ -13,20 +14,23 @@ import { IngredientsService } from 'src/app/services/ingredients/ingredients.ser
 export class AddIngredientComponent implements OnInit{
   declare formaddIngredient: FormGroup;
   declare ingredient:Ingredients
-  declare listeingredient : any ;
-  declare tableauingredient: [];
-  @Input()
-  addingree!: boolean;
-  @Input()
-  idrecetteencourss! : number;
+ declare listeingredient : any ;
+  // declare tableauingredient: [];
+ @Input() addingree!: boolean;
+ @Input() idrecetteencours! : number;
+
 
   @Output()
    public   cacheringre:EventEmitter<any> =new EventEmitter<any>();
+   declare recettes : any ;
+  //  idrecetteencours!: number;
+
 
   constructor (
     private ingredientService: IngredientsService,
     private formBuilder: FormBuilder,
     private router : Router,
+    private recetteService: RecetteService,
 
   ){}
     ngOnInit(): void {
@@ -37,24 +41,37 @@ export class AddIngredientComponent implements OnInit{
 
 
         })
+        this.recetteService.findAllRecettes().subscribe(
+          data =>{
+          console.log(data);
+              this.recettes = Object.values(data);
+             this.recettes.sort((a: { date_recette: number; }, b: { date_recette: number; }) => (a.date_recette < b.date_recette ? 1 : -1))
+              console.log(this.recettes);
+             this.idrecetteencours=this.recettes[0].id_recette;
+             console.log(" id recette avant le set"+this.idrecetteencours);
+              this.recetteService.setIdRecetteEncours( this.idrecetteencours);
+              console.log(" id recette en cours dans affiche ingredient"+this.idrecetteencours);
+            }
+        )
         this.ingredientService.findAllIngredients().subscribe(
           data =>{
             console.table(data);
               this.listeingredient = data;
           }
         )
-        console.log(" id recette dans ingrdients"+this.idrecetteencourss)
-        console.log(" addingred true or false : "+this.addingree)
+        // this.idrecetteencours= this.recetteService.getIdRecetteEncours();
+        // console.log("testtttttttt" + this.idrecetteencours);
+        // console.log(" addingred true or false : "+this.addingree)
   }
   create(){
-
+    console.log(" id recette debut de create "+this.idrecetteencours)
     const formValues = this.formaddIngredient.value;
     const ingredient = new Ingredients();
 
       ingredient.id_ingredient = this.formaddIngredient.value.id_ingredient;
-      ingredient.id_recette = this.formaddIngredient.value.id_recetteidrecetteencours
+      ingredient.id_recette = this.idrecetteencours;
       ingredient.quantiteingredient = this.formaddIngredient.value.quantiteingredient;
-      console.log(" id recette dans ingrdients"+this.idrecetteencourss)
+      console.log(" id recette avant submit"+this.idrecetteencours)
       this.ingredientService.saveIngredient(ingredient).subscribe((response) => {
         console.log(response);
           this.formaddIngredient.reset();
@@ -67,6 +84,7 @@ export class AddIngredientComponent implements OnInit{
         this.cacheringre.emit({});
        }
       }
+
 
 
 //// test
