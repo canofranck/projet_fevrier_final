@@ -16,6 +16,7 @@ export class AddIngredientComponent implements OnInit{
   declare ingredient:Ingredients
  declare listeingredient : any ;
   // declare tableauingredient: [];
+  nouveau_tableau: any[] = [];
  @Input() addingree!: boolean;
  @Input() idrecetteencours! : number;
 
@@ -56,9 +57,18 @@ export class AddIngredientComponent implements OnInit{
         this.ingredientService.findAllIngredients().subscribe(
           data =>{
             console.table(data);
-              this.listeingredient = data;
+
+              // this.listeingredient.sort((a: { id_recette: number; }, b: { id_recette: number; }) => (a.id_recette = this.idrecetteencours ? 1 : -1))
           }
         )
+       console.table ( this.listeingredient)
+
+    //    for (let element of this.listeingredient) {
+    //     if (element[2] == this.idrecetteencours) {
+    //         this.nouveau_tableau.push([element[1],element[2],element[3]]);
+    //     }
+    // }
+    // console.table(this.nouveau_tableau)
         // this.idrecetteencours= this.recetteService.getIdRecetteEncours();
         // console.log("testtttttttt" + this.idrecetteencours);
         // console.log(" addingred true or false : "+this.addingree)
@@ -71,11 +81,13 @@ export class AddIngredientComponent implements OnInit{
       ingredient.id_ingredient = this.formaddIngredient.value.id_ingredient;
       ingredient.id_recette = this.idrecetteencours;
       ingredient.quantiteingredient = this.formaddIngredient.value.quantiteingredient;
+      this.nouveau_tableau.push(ingredient);
+      console.table(this.nouveau_tableau);
       console.log(" id recette avant submit"+this.idrecetteencours)
       this.ingredientService.saveIngredient(ingredient).subscribe((response) => {
         console.log(response);
           this.formaddIngredient.reset();
-          this.listeingredient.push(response as Ingredients);
+          // this.nouveau_tableau.push(response as Ingredients);
         //
 
        });

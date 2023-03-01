@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 import { IngredientsService } from 'src/app/services/ingredients/ingredients.service';
 import { RecetteService } from 'src/app/services/recette/recette.service';
 import { Recette } from 'src/app/models/recette/recette';
-import { delay } from 'rxjs';
+import { concatMap, delay } from 'rxjs';
 
 
 @Component({
@@ -46,27 +46,41 @@ export class PostrecetteComponent implements OnInit{
           id_recette:['',Validators.required],
           quantiteingredient:['',Validators.required],
         })
-        const recette = new Recette();
-        recette.date_recette = new Date();
-        recette.titre_recette='';
-        recette. description_recette='';
-          recette.categorie_recette='';
-          recette.niveaudifficulte_recette='';
-          recette.tempspreparation_recette='';
-          recette.tempscuisson_recette='';
-          recette.tempstotal_recette='';
-          recette.nbpersonne_recette='';
-          recette.recettepremium_recette=false;
-          recette.id_utilisateur=1;
-console.log(this.recette);
+//         const recette = new Recette();
+//         recette.date_recette = new Date();
+//         recette.titre_recette='';
+//         recette. description_recette='';
+//           recette.categorie_recette='';
+//           recette.niveaudifficulte_recette='';
+//           recette.tempspreparation_recette='';
+//           recette.tempscuisson_recette='';
+//           recette.tempstotal_recette='';
+//           recette.nbpersonne_recette='';
+//           recette.recettepremium_recette=false;
+//           recette.id_utilisateur=1;
+// console.log(this.recette);
 
-        this.recetteService.saveRecette(recette).subscribe(
-          () =>{
-            // this.router.navigate(['postrecette']);
-          }
+//         // this.recetteService.saveRecette(recette).subscribe(
+//         //   () =>{
+//         //     // this.router.navigate(['postrecette']);
+//         //   }
 
-         );
-         this.form = this.formBuilder.group({
+//         //  );
+//         this.recetteService.saveRecette(recette).pipe(
+//           concatMap(() => this.recetteService.findAllRecettes())
+//         ).subscribe(
+//           data =>{
+//             console.log(data);
+//             this.recettes = Object.values(data);
+//             this.recettes.sort((a: { date_recette: number; }, b: { date_recette: number; }) => (a.date_recette < b.date_recette ? 1 : -1))
+//             console.log(this.recettes);
+//             this.idrecetteencours=this.recettes[0].id_recette;
+//             console.log(" id recette avant le set"+this.idrecetteencours);
+//             this.recetteService.setIdRecetteEncours( this.idrecetteencours);
+//             console.log(" id recette en cours dans affiche ingredient"+this.idrecetteencours);
+//           }
+//         );
+        this.form = this.formBuilder.group({
           id_recette :[''],
           titre_recette: [''],
           date_recette:[new Date()],
@@ -120,19 +134,53 @@ console.log(this.recette);
 
     // }
 
-        this.recetteService.findAllRecettes().subscribe(
-          data =>{
-          console.log(data);
-              this.recettes = Object.values(data);
-             this.recettes.sort((a: { date_recette: number; }, b: { date_recette: number; }) => (a.date_recette < b.date_recette ? 1 : -1))
-              console.log(this.recettes);
-             this.idrecetteencours=this.recettes[0].id_recette;
-             console.log(" id recette avant le set"+this.idrecetteencours);
-              this.recetteService.setIdRecetteEncours( this.idrecetteencours);
-              console.log(" id recette en cours dans affiche ingredient"+this.idrecetteencours);
-            }
-        )
+        // this.recetteService.findAllRecettes().subscribe(
+        //   data =>{
+        //   console.log(data);
+        //       this.recettes = Object.values(data);
+        //      this.recettes.sort((a: { date_recette: number; }, b: { date_recette: number; }) => (a.date_recette < b.date_recette ? 1 : -1))
+        //       console.log(this.recettes);
+        //      this.idrecetteencours=this.recettes[0].id_recette;
+        //      console.log(" id recette avant le set"+this.idrecetteencours);
+        //       this.recetteService.setIdRecetteEncours( this.idrecetteencours);
+        //       console.log(" id recette en cours dans affiche ingredient"+this.idrecetteencours);
+        //     }
+        // )
+        const recette = new Recette();
+        recette.date_recette = new Date();
+        recette.titre_recette='';
+        recette. description_recette='';
+          recette.categorie_recette='';
+          recette.niveaudifficulte_recette='';
+          recette.tempspreparation_recette='';
+          recette.tempscuisson_recette='';
+          recette.tempstotal_recette='';
+          recette.nbpersonne_recette='';
+          recette.recettepremium_recette=false;
+          recette.id_utilisateur=1;
+console.log(this.recette);
 
+        // this.recetteService.saveRecette(recette).subscribe(
+        //   () =>{
+        //     // this.router.navigate(['postrecette']);
+        //   }
+
+        //  );
+        this.recetteService.saveRecette(recette).pipe(
+          concatMap(() => this.recetteService.findAllRecettes())
+        ).subscribe(
+          data =>{
+            console.log(data);
+            this.recettes = Object.values(data);
+            this.recettes.sort((a: { date_recette: number; }, b: { date_recette: number; }) => (a.date_recette < b.date_recette ? 1 : -1))
+            console.log(this.recettes);
+            this.idrecetteencours=this.recettes[0].id_recette;
+            console.log(" id recette avant le set"+this.idrecetteencours);
+            this.recetteService.setIdRecetteEncours( this.idrecetteencours);
+            console.log(" id recette en cours dans affiche ingredient"+this.idrecetteencours);
+          }
+        );
+       
 
   }
 
