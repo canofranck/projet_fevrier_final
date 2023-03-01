@@ -44,24 +44,24 @@ export class AddIngredientComponent implements OnInit{
         })
         this.recetteService.findAllRecettes().subscribe(
           data =>{
-          console.log(data);
+          // console.log(data);
               this.recettes = Object.values(data);
              this.recettes.sort((a: { date_recette: number; }, b: { date_recette: number; }) => (a.date_recette < b.date_recette ? 1 : -1))
-              console.log(this.recettes);
+              // console.log(this.recettes);
              this.idrecetteencours=this.recettes[0].id_recette;
-             console.log(" id recette avant le set"+this.idrecetteencours);
+            //  console.log(" id recette avant le set"+this.idrecetteencours);
               this.recetteService.setIdRecetteEncours( this.idrecetteencours);
-              console.log(" id recette en cours dans affiche ingredient"+this.idrecetteencours);
+              // console.log(" id recette en cours dans affiche ingredient"+this.idrecetteencours);
             }
         )
         this.ingredientService.findAllIngredients().subscribe(
           data =>{
-            console.table(data);
+            // console.table(data);
 
               // this.listeingredient.sort((a: { id_recette: number; }, b: { id_recette: number; }) => (a.id_recette = this.idrecetteencours ? 1 : -1))
           }
         )
-       console.table ( this.listeingredient)
+      //  console.table ( this.listeingredient)
 
     //    for (let element of this.listeingredient) {
     //     if (element[2] == this.idrecetteencours) {
@@ -74,7 +74,7 @@ export class AddIngredientComponent implements OnInit{
         // console.log(" addingred true or false : "+this.addingree)
   }
   create(){
-    console.log(" id recette debut de create "+this.idrecetteencours)
+    // console.log(" id recette debut de create "+this.idrecetteencours)
     const formValues = this.formaddIngredient.value;
     const ingredient = new Ingredients();
 
@@ -82,10 +82,10 @@ export class AddIngredientComponent implements OnInit{
       ingredient.id_recette = this.idrecetteencours;
       ingredient.quantiteingredient = this.formaddIngredient.value.quantiteingredient;
       this.nouveau_tableau.push(ingredient);
-      console.table(this.nouveau_tableau);
-      console.log(" id recette avant submit"+this.idrecetteencours)
+      // console.table(this.nouveau_tableau);
+      // console.log(" id recette avant submit"+this.idrecetteencours)
       this.ingredientService.saveIngredient(ingredient).subscribe((response) => {
-        console.log(response);
+        // console.log(response);
           this.formaddIngredient.reset();
           // this.nouveau_tableau.push(response as Ingredients);
         //
