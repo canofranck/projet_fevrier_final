@@ -37,6 +37,8 @@ export class AddCommentaireComponent implements OnInit{
     })
 }
 create(){
+
+  // mehtode create avec manytoone depuis commentaire 
   this.utilisateurService.editUser(this.formAddCommentaire.value.id_utilisateur).subscribe(
     (utilisateur) => {
       this.recetteService.editRecette(this.formAddCommentaire.value.id_recette).subscribe(

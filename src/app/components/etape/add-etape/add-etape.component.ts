@@ -33,7 +33,7 @@ export class AddEtapeComponent implements OnInit{
         })
   }
   create(){
-    
+     // mehtode create avec manytoone depuis etape
     this.recetteService.editRecette(this.formaddEtape.value.id_recette).subscribe(
       (recette) => {
         if(recette) {
