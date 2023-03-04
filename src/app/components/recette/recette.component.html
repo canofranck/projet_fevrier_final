@@ -1,6 +1,8 @@
 
 
+
 <body>
+
   <!--[if lte IE 9]>
   <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
   <![endif]-->
@@ -19,6 +21,7 @@
       <app-header></app-header>
       <!-- Header Area End Here -->
       <!-- Inne Page Banner Area Start Here -->
+
       <section class="inner-page-banner bg-common" data-bg-image="./assets/img/figure/inner-page-banner1.jpg">
           <div class="container">
               <div class="row">
@@ -30,6 +33,8 @@
                                   <a href="index.html">Accueil</a>
                               </li>
                               <li>Recette Accueil</li>
+
+
                           </ul>
                       </div>
                   </div>
@@ -45,15 +50,14 @@
                       <div class="single-recipe-layout1">
 
                           <div class="ctg-name">Gateau</div>
-                          <tr *ngFor="let p of recettes">
 
-                          <h2 class="item-title">{{p.titre_recette}}</h2>
+
+                          <h2 class="item-title">{{recetteSelectionnee.titre_recette}}</h2>
                           <div class="row mb-4">
                               <div class="col-xl-9 col-12">
                                   <ul class="entry-meta">
-                                      <li class="single-meta"><a href="#"><i class="far fa-calendar-alt"></i>{{p.date_recette}}</a></li>
-                                      <li class="single-meta"><a href="#"><i class="fas fa-user"></i>by <span>Kazi
-                                                  Fahim</span></a></li>
+                                      <li class="single-meta"><a href="#"><i class="far fa-calendar-alt"></i>{{recetteSelectionnee.date_recette}}</a></li>
+                                      <li class="single-meta"><a href="#"><i class="fas fa-user"></i>by <span>{{recetteSelectionnee.id_utilisateur}}</span></a></li>
                                       <li class="single-meta">
                                           <ul class="item-rating">
                                               <li class="star-fill"><i class="fas fa-star"></i></li>
@@ -98,7 +102,7 @@
                                               </div>
                                               <div class="media-body space-sm">
                                                   <div class="feature-title">PREP TIME</div>
-                                                  <div class="feature-sub-title">{{p.tempspreparation_recette}}</div>
+                                                  <div class="feature-sub-title">{{recetteSelectionnee.tempspreparation_recette}}</div>
                                               </div>
                                           </div>
                                       </div>
@@ -111,7 +115,7 @@
                                               </div>
                                               <div class="media-body space-sm">
                                                   <div class="feature-title">COOK TIME</div>
-                                                  <div class="feature-sub-title">{{p.tempscuisson_recette}}</div>
+                                                  <div class="feature-sub-title">{{recetteSelectionnee.tempscuisson_recette}}</div>
                                               </div>
                                           </div>
                                       </div>
@@ -124,7 +128,7 @@
                                               </div>
                                               <div class="media-body space-sm">
                                                   <div class="feature-title">SERVING</div>
-                                                  <div class="feature-sub-title">{{p.nbpersonne_recette}}</div>
+                                                  <div class="feature-sub-title">{{recetteSelectionnee.nbpersonne_recette}}</div>
                                               </div>
                                           </div>
                                       </div>
@@ -144,14 +148,14 @@
                                   </li>
                               </ul>
                           </div>
-                          <p class="item-description">{{p.description_recette}}</p>
-                          <p class="item-description"></p>
+                          <!-- <p class="item-description">{{recetteSelectionnee.description_recette}}</p>
+                          <p class="item-description"></p> -->
                           <div class="making-elements-wrap">
                               <div class="row">
                                   <div class="col-xl-6 col-12">
                                       <div class="ingridients-wrap">
-                                          <h3 class="item-title"><i class="fas fa-list-ul"></i>Ingridients</h3>
-                                          <div class="adjust-servings">
+                                          <h3 class="item-title"><i class="fas fa-list-ul"></i>Ingredients</h3>
+                                          <!-- <div class="adjust-servings">
                                               <div class="servings-title">Adjust Servings</div>
                                               <form class="servings-quantity">
                                                   <div class="input-group quantity-holder" id="quantity-holder">
@@ -167,12 +171,14 @@
                                                       </div>
                                                   </div>
                                               </form>
-                                          </div>
-                                          <div class="checkbox checkbox-primary">
+                                          </div> -->
+                                          <div class="checkbox checkbox-primary" *ngFor="let ingredient of list">
                                               <input id="checkbox1" type="checkbox">
-                                              <label for="checkbox1">{{p['listIngredient'][0]}}</label>
+                                              <label for="checkbox1">{{ ingredient.quantiteingredient}}</label>
                                           </div>
-                                          <div class="checkbox checkbox-primary">
+
+
+                                          <!-- <div class="checkbox checkbox-primary">
                                               <input id="checkbox2" type="checkbox">
                                               <label for="checkbox2">4 cup roasted macadamia nuts</label>
                                           </div>
@@ -191,7 +197,7 @@
                                           <div class="checkbox checkbox-primary">
                                               <input id="checkbox6" type="checkbox">
                                               <label for="checkbox6">8 cup roasted macadamia nuts</label>
-                                          </div>
+                                          </div> -->
                                       </div>
                                   </div>
                                   <div class="col-xl-6 col-12">
@@ -202,12 +208,9 @@
 
                           <div class="direction-wrap-layout1">
                               <div class="section-heading heading-dark">
-                                  <h2 class="item-heading">DIRECTIONS</h2>
+                                  <h2 class="item-heading">Description</h2>
                               </div>
-                              <p class="section-paragraph">Salamander lied porpoise much over tightly circa horse
-                                  taped so innocuously side crudey mightily rigorous plot life. New homes in
-                                  particular are subject. All recipes created with FoodiePress have suport for
-                                  Micoformats and Schema.org is a collaboration byo improve convallis.</p>
+                              <p class="section-paragraph">{{recetteSelectionnee.description_recette}}</p>
                               <div class="direction-box-layout1">
                                   <div class="item-figure">
                                       <img src="./assets/img/figure/direction1.jpg" alt="DIRECTIONS">
@@ -257,7 +260,7 @@
                                   </div>
                               </div>
                           </div>
-                          <div class="tag-share">
+                          <!-- <div class="tag-share">
                               <ul>
                                   <li>
                                       <ul class="inner-tag">
@@ -305,8 +308,8 @@
                                       </ul>
                                   </li>
                               </ul>
-                          </div>
-                          <div class="recipe-author">
+                          </div> -->
+                          <!-- <div class="recipe-author">
                               <div class="media media-none--xs">
                                   <img src="./assets/img/blog/author9.jpg" alt="Blog Author" class="rounded-circle media-img-auto">
                                   <div class="media-body">
@@ -334,8 +337,8 @@
                                       </ul>
                                   </div>
                               </div>
-                          </div>
-                          <div class="also-like-wrap">
+                          </div> -->
+                          <!-- <div class="also-like-wrap">
                               <h4 class="also-like-title">YOU MAY ALSO LIKE</h4>
                               <div class="row">
                                   <div class="col-xl-4 col-lg-6 col-md-6 col-12">
@@ -380,7 +383,7 @@
                                       </div>
                                   </div>
                               </div>
-                          </div>
+                          </div> -->
                           <div class="recipe-reviews">
                               <div class="section-heading heading-dark">
                                   <h2 class="item-heading">RECIPE REVIEWS</h2>
@@ -455,34 +458,35 @@
                                       <div class="rate-item"><i class="fa fa-star" aria-hidden="true"></i></div>
                                   </div>
                               </div>
-                              <form class="leave-form-box">
+                               <form class="leave-form-box" [formGroup]="formaddCommentaire" (ngSubmit)="create() " action="post">
                                   <div class="row">
                                       <div class="col-12 form-group">
                                           <label>Comment :</label>
-                                          <textarea placeholder="" class="textarea form-control" name="message" rows="7"
+                                          <textarea placeholder="" class="textarea form-control" name="commentaire" id="commentaire" formControlName="commentaire" data-length="255" rows="7"
                                               cols="20" data-error="Message field is required" required></textarea>
                                           <div class="help-block with-errors"></div>
                                       </div>
-                                      <div class="col-lg-4 form-group">
+                                      <!-- <div class="col-lg-4 form-group">
                                           <label>Name :</label>
                                           <input type="text" placeholder="" class="form-control" name="name"
                                               data-error="Name field is required" required>
                                           <div class="help-block with-errors"></div>
-                                      </div>
-                                      <div class="col-lg-4 form-group">
+                                      </div> -->
+                                      <!-- <div class="col-lg-4 form-group">
                                           <label>E-mail :</label>
                                           <input type="email" placeholder="" class="form-control" name="email"
                                               data-error="E-mail field is required" required>
                                           <div class="help-block with-errors"></div>
-                                      </div>
-                                      <div class="col-lg-4 form-group">
+                                      </div> -->
+                                      <!-- <div class="col-lg-4 form-group">
                                           <label>Website :</label>
                                           <input type="email" placeholder="" class="form-control" name="email"
                                               data-error="E-mail field is required" required>
                                           <div class="help-block with-errors"></div>
-                                      </div>
+                                      </div> -->
                                       <div class="col-12 form-group mb-0">
                                           <button type="submit" class="item-btn">POST REVIEW</button>
+
                                       </div>
                                   </div>
                                   <div class="form-response"></div>

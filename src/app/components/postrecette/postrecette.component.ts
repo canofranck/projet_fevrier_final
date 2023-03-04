@@ -103,8 +103,8 @@ export class PostrecetteComponent implements OnInit{
 
     const formValues = this.form.value;
     const recette2 = new Recette();
-     recette2.id_recette=this.idrecetteencours;
-       recette2.titre_recette=this.form.value.date_recette;
+    //  recette2.id_recette=this.idrecetteencours;
+       recette2.titre_recette=this.form.value.titre_recette;
         recette2.date_recette=new Date();
          recette2. description_recette=this.form.value.description_recette;
           recette2.categorie_recette=this.form.value.categorie_recette;
@@ -180,7 +180,7 @@ console.log(this.recette);
             console.log(" id recette en cours dans affiche ingredient"+this.idrecetteencours);
           }
         );
-       
+
 
   }
 

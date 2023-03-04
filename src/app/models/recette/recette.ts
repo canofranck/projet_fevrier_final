@@ -14,7 +14,8 @@ export class Recette {
    public nbpersonne_recette:string;
    public recettepremium_recette:boolean;
    public id_utilisateur:number;
-   public listingredient:[];
+   public listIngredient:[];
+   public quantiteingredient : string;
   //  public id_ingredient :number;
 //    public ingredients:Ingredients[];
 // public quantiteingredient:string;
@@ -31,7 +32,8 @@ export class Recette {
     this.nbpersonne_recette="";
     this.recettepremium_recette=false;
     this.id_utilisateur=0;
-    this.listingredient=[];
+    this.listIngredient=[];
+    this.quantiteingredient="";
     // this.id_ingredient=0;
 //     this.ingredients=[];
 // this.quantiteingredient='';
