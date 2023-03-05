@@ -178,6 +178,7 @@
                                           </div>
 
 
+
                                           <!-- <div class="checkbox checkbox-primary">
                                               <input id="checkbox2" type="checkbox">
                                               <label for="checkbox2">4 cup roasted macadamia nuts</label>
@@ -211,19 +212,17 @@
                                   <h2 class="item-heading">Description</h2>
                               </div>
                               <p class="section-paragraph">{{recetteSelectionnee.description_recette}}</p>
-                              <div class="direction-box-layout1">
+
+                              <div class="direction-box-layout1"  *ngFor="let e of affichetape">
                                   <div class="item-figure">
                                       <img src="./assets/img/figure/direction1.jpg" alt="DIRECTIONS">
                                   </div>
                                   <div class="item-content">
-                                      <div class="serial-number">01 Step</div>
-                                      <p>Recipe View<span class="item-time"><i class="far fa-clock"></i>5 Minutes</span> chemaorg is a
-                                          collaboration improve
-                                          the web by creat inegaera structured markupinn ocuously
-                                          side crudey mightily rigorous plot life.</p>
+                                      <div class="serial-number">etape : {{ e.numero_etape}}</div>
+                                      <p>{{ e.instructions_etape}}</p>
                                   </div>
                               </div>
-                              <div class="direction-box-layout1">
+                              <!-- <div class="direction-box-layout1">
                                   <div class="item-figure">
                                       <img src="./assets/img/figure/direction2.jpg" alt="DIRECTIONS">
                                   </div>
@@ -258,7 +257,7 @@
                                           the web by creat inegaera structured markupinn ocuously
                                           side crudey mightily rigorous plot life.</p>
                                   </div>
-                              </div>
+                              </div> -->
                           </div>
                           <!-- <div class="tag-share">
                               <ul>

@@ -20,7 +20,7 @@ declare affiche : any[];
 declare recetteSelectionnee : Recette;
   declare recettes : any [];
   public listIngredient: { id_ingredient: number; quantiteingredient: string; }[]=[];
-  public listEtape: { id_etape: number; id_recette : number;numero_etape : number; instructuions_etape: string;image_etape:string  }[]=[];
+  public listEtape: { id_etape: number; id_recette : number;numero_etape : number; instructions_etape: string;image_etape:string  }[]=[];
  public  list: any[] = [];
  public  affichetape: any[] = [];
   form: any;
@@ -88,14 +88,16 @@ create() {
 getRecetteById(idRecette: number) {
   const recetteSelectionnee = this.recettes.find(recette => recette.id_recette === idRecette);
   console.table(recetteSelectionnee);
-  console.table(recetteSelectionnee.listIngredient)
-  console.log(recetteSelectionnee.description_recette)
-  console.log(recetteSelectionnee.categorie_recette)
+  console.table(recetteSelectionnee.listIngredient);
+  console.table(recetteSelectionnee.listEtape);
+
   this.recetteSelectionnee = recetteSelectionnee;
   this.listIngredient = this.convertToList(recetteSelectionnee.listIngredient);
-  this.listEtape=this.convertToListetape(recetteSelectionnee.listeEtape)
+  this.listEtape=this.convertToListetape(recetteSelectionnee.listEtape);
   console.table(this.listIngredient);
   console.table(this.listEtape);
+  console.table( this.list)
+  console.table (this.affichetape)
 }
 convertToList(listIngredient: {id_ingredient: number, quantiteingredient: string}[]): any[] {
 
@@ -108,10 +110,10 @@ convertToList(listIngredient: {id_ingredient: number, quantiteingredient: string
 convertToListetape(listEtape: { id_etape: number, id_recette : number,numero_etape : number, instructions_etape: string,image_etape:string}[]): any[] {
 
   for(let i = 0; i < listEtape.length; i++) {
-    let afficheetape = {id_ingredient: listEtape[i].id_etape,numero_etape: listEtape[i].instructions_etape};
-    this.list.push(afficheetape);
+    let etape = {id_etape: listEtape[i].id_etape,  id_recette : listEtape[i].id_recette ,numero_etape: listEtape[i].numero_etape,instructions_etape:listEtape[i].instructions_etape ,image_etape:listEtape[i].image_etape};
+    this.affichetape.push(etape);
   }
-  return this.list;
+  return this.affichetape;
 }
 }
 
