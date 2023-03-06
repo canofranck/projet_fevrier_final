@@ -7,6 +7,7 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { RecetteService } from "src/app/services/recette/recette.service";
 import { ListIngredientComponent } from "../ingredients/list-ingredient/list-ingredient.component";
+import { GallerieService } from 'src/app/services/gallerie/gallerie.service';
 
 @Component({
   selector: 'app-recette',
@@ -15,20 +16,24 @@ import { ListIngredientComponent } from "../ingredients/list-ingredient/list-ing
 })
  export class RecetteComponent implements  OnInit{
  declare formaddCommentaire: FormGroup;
+ declare form : FormGroup;
  declare idrecetteencours : number;
 declare affiche : any[];
 declare recetteSelectionnee : Recette;
   declare recettes : any [];
   public listIngredient: { id_ingredient: number; quantiteingredient: string; }[]=[];
   public listEtape: { id_etape: number; id_recette : number;numero_etape : number; instructions_etape: string;image_etape:string  }[]=[];
- public  list: any[] = [];
+  public listGalerie : { id_gallerie: number, id_recette : number,galleriefilename : string, id_utilisateur: number}[]= [];
+  public  list: any[] = [];
  public  affichetape: any[] = [];
-  form: any;
-
+ declare commentaire:Commentaire;
+ declare gallerie : any [];
+ public  affichegallerie: any[] = [];
   constructor (private recetteService : RecetteService,
     private router : Router,
     private commentaireserivce: CommentaireService,
     private formBuilder: FormBuilder,
+    private gallerieService : GallerieService,
     ){
 
 }
@@ -52,9 +57,9 @@ getRecettes() {
     data =>{
       // console.table(data);
         this.recettes = data as any[];
-       console.table(this.recettes)
+      //  console.table(this.recettes)
       //  const affiche: any[] =this.recettes.slice(4,5)
-       const idrecetteselectionner = 6; // Mettez ici l'id de la recette sélectionnée
+       const idrecetteselectionner = 10; // Mettez ici l'id de la recette sélectionnée
        this.getRecetteById(idrecetteselectionner);
 
   // console.table(affiche);
@@ -65,19 +70,20 @@ getRecettes() {
 }
 create() {
 
+  const formValues = this.formaddCommentaire.value;
 
+  const commentairepost = new Commentaire();
 
-  const commentaire = new Commentaire();
+  commentairepost.commentaire=this.formaddCommentaire.value.commentaire;
+  commentairepost.datecommentaire=new Date();
+  commentairepost.notecommentaire='10';
+  commentairepost.id_recette=1;
+  commentairepost.id_utilisateur=1;
 
-     commentaire.commentaire=this.form.value.commentaire;
-      commentaire.datecommentaire=new Date();
-      commentaire.notecommentaire='10';
-      commentaire.id_recette=1;
-      commentaire.id_utilisateur=1;
+  // console.log(this.formaddCommentaire.value);
+  // console.log(commentairepost)
 
-  console.log(this.form.value);
-
-   this.commentaireserivce.saveCommentaire(this.form.value).subscribe(
+   this.commentaireserivce.saveCommentaire(commentairepost).subscribe(
     () =>{
 
       // this.router.navigate(['postrecette']);
@@ -87,17 +93,18 @@ create() {
 }
 getRecetteById(idRecette: number) {
   const recetteSelectionnee = this.recettes.find(recette => recette.id_recette === idRecette);
-  console.table(recetteSelectionnee);
-  console.table(recetteSelectionnee.listIngredient);
-  console.table(recetteSelectionnee.listEtape);
+  // console.table(recetteSelectionnee);
+  // console.table(recetteSelectionnee.listIngredient);
+   console.table(recetteSelectionnee.listEtape);
 
   this.recetteSelectionnee = recetteSelectionnee;
   this.listIngredient = this.convertToList(recetteSelectionnee.listIngredient);
   this.listEtape=this.convertToListetape(recetteSelectionnee.listEtape);
-  console.table(this.listIngredient);
-  console.table(this.listEtape);
-  console.table( this.list)
-  console.table (this.affichetape)
+  this.listGalerie=this.convertToListgalerie(recetteSelectionnee.listGalerie);
+  // console.table(this.listIngredient);
+  // console.table(this.listEtape);
+  // console.table( this.list)
+  // console.table (this.affichetape)
 }
 convertToList(listIngredient: {id_ingredient: number, quantiteingredient: string}[]): any[] {
 
@@ -114,6 +121,14 @@ convertToListetape(listEtape: { id_etape: number, id_recette : number,numero_eta
     this.affichetape.push(etape);
   }
   return this.affichetape;
+}
+convertToListgalerie(listGalerie: { id_gallerie: number, id_recette : number,galleriefilename : string, id_utilisateur: number}[]): any[] {
+
+  for(let i = 0; i <listGalerie.length; i++) {
+    let gallerie = {id_gallerie: listGalerie[i].id_gallerie,  id_recette : listGalerie[i].id_recette, galleriefilename: listGalerie[i].galleriefilename, id_utilisateur:listGalerie[i]. id_utilisateur};
+    this.affichegallerie.push(gallerie);
+  }
+  return this.affichegallerie;
 }
 }
 

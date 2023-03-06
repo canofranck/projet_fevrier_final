@@ -74,13 +74,13 @@ img:hover {
     <div class="form-group">
         <ul class="upload-img">
           <th *ngFor="let g of gallerie ">
-            <ng-container *ngIf="g.id_utilisateur == 1" >
+            <ng-container *ngIf="g.id_recette == 1" >
             <li><img src="http://localhost:8085/image/{{g.gallerie_filename}}" alt=""  style="width:130px"></li>
             </ng-container>
           </th>
 
         </ul>
-        
+
     </div>
 </div>
 

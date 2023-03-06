@@ -72,7 +72,7 @@
                                     rows="7" cols="20" ></textarea>
                                 <div class="help-block with-errors"></div>
                             </div>
-                            <app-upload-file></app-upload-file>
+
                             <!-- <div class="additional-input-wrap">
                                 <label>ajouter vos photos de la recette</label>
                                 <div class="form-group">
@@ -173,7 +173,9 @@
                                 <app-add-etape *ngIf="afficheretape" (cacheretape)="cachetape()"></app-add-etape>
                                 <div class="summernote"></div>
                             </div>
+                            <app-upload-file></app-upload-file>
                             <button type="submit" class="btn-submit">ENREGISTRER LA RECETTE</button>
+
                         </form>
                     </div>
 

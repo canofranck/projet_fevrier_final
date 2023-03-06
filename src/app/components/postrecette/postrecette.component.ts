@@ -121,7 +121,7 @@ export class PostrecetteComponent implements OnInit{
      this.recetteService.updateRecette2(this.form.value,this.idrecetteencours).subscribe(
       () =>{
 
-        // this.router.navigate(['postrecette']);
+         this.router.navigate(['']);
       }
      );
   }
