@@ -15,6 +15,7 @@ export class Recette {
    public recettepremium_recette:boolean;
    public id_utilisateur:number;
    public listIngredient:[];
+   public listGalerie:[];
    public quantiteingredient : string;
   //  public id_ingredient :number;
 //    public ingredients:Ingredients[];
@@ -34,6 +35,7 @@ export class Recette {
     this.id_utilisateur=0;
     this.listIngredient=[];
     this.quantiteingredient="";
+    this.listGalerie=[];
     // this.id_ingredient=0;
 //     this.ingredients=[];
 // this.quantiteingredient='';

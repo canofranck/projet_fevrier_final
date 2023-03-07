@@ -59,7 +59,7 @@ getRecettes() {
         this.recettes = data as any[];
       //  console.table(this.recettes)
       //  const affiche: any[] =this.recettes.slice(4,5)
-       const idrecetteselectionner = 10; // Mettez ici l'id de la recette sélectionnée
+       const idrecetteselectionner = 11; // Mettez ici l'id de la recette sélectionnée
        this.getRecetteById(idrecetteselectionner);
 
   // console.table(affiche);
