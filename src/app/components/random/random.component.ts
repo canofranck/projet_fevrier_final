@@ -12,6 +12,7 @@ export class RandomComponent implements  OnInit{
   recettes: any[] = [];
   public randomRecettes: any[] = [];
   public i: number = 0;
+  declare gallerie :any;
   constructor (
   private recetteService: RecetteService,
   private gallerieService : GallerieService,
@@ -20,7 +21,7 @@ export class RandomComponent implements  OnInit{
 
 // this.getRecettes();
 this.getRecettesRandom();
-
+this.getGalleries();
    }
 
    getRecettes() {
@@ -48,12 +49,12 @@ getRecettesRandom() {
         }
       }
       this.randomRecettes = randomRecettes;
-console.log(randomRecettes);
-console.log(randomRecettes[0].listGalerie.galleriefilename);
-console.log(randomRecettes[0].titre_recette);
-console.log(randomRecettes[0].description_recette);
-console.log(randomRecettes[0].categorie_recette);
-console.log(randomRecettes[0].nbpersonne_recette);
+// console.log(randomRecettes);
+// console.log(randomRecettes[0].listGalerie.galleriefilename);
+// console.log(randomRecettes[0].titre_recette);
+// console.log(randomRecettes[0].description_recette);
+// console.log(randomRecettes[0].categorie_recette);
+// console.log(randomRecettes[0].nbpersonne_recette);
 // et ainsi de suite pour les autres propriétés...
 
       for (let i = 0; i < this.randomRecettes.length; i++) {
@@ -62,15 +63,24 @@ console.log(randomRecettes[0].nbpersonne_recette);
         } else {
           console.log('galleriefilename non définie pour la recette ' + this.randomRecettes[i].id_recette);
         }
-        console.log(randomRecettes[i].listGalerie);
+        // console.log(randomRecettes[i].listGalerie);
       }
-      console.table(randomRecettes[0].listEtape.numero_etape);
-      console.table(randomRecettes[1].listIngredient.id_ingredient);
-      console.table(randomRecettes[2].listGalerie.galleriefilename);
+      // console.table(randomRecettes[0].listEtape.numero_etape);
+      // console.table(randomRecettes[1].listIngredient.id_ingredient);
+      // console.table(randomRecettes[2].listGalerie.galleriefilename);
 
     }
   );
 
 }
+getGalleries() {
+  this.gallerieService.findAllGalleries().subscribe(
+     (data=>{
+       this.gallerie = data;
+console.log(this.gallerie);
+     }
+       )
 
+   )
+ }
 }

@@ -4,8 +4,7 @@
           <div class="col-lg-4 col-md-6 col-sm-12" *ngFor="let item of randomRecettes ; let i=index">
               <div class="product-box-layout4">
                   <div class="item-figure">
-                    <img [src]="item.listGalerie?.galleriefilename ? 'http://localhost:8085/image/' + item.listGalerie.galleriefilename : ''" alt="Product">
-
+                    <a *ngFor="let g of gallerie; let i=index" href="#"><img *ngIf="g.id_recette == item.id_recette" src="http://localhost:8085/image/{{g.galleriefilename}}" alt="Post" style="width:350px"></a>
 
                       <a href="single-recipe1.html" class="item-dot">
                           <span></span>

@@ -16,7 +16,9 @@ export class Recette {
    public id_utilisateur:number;
    public listIngredient:[];
    public listGalerie:[];
-   public quantiteingredient : string;
+   public listEtape:[];
+   public listCommentaire:[];
+  //  public quantiteingredient : string;
   //  public id_ingredient :number;
 //    public ingredients:Ingredients[];
 // public quantiteingredient:string;
@@ -34,8 +36,10 @@ export class Recette {
     this.recettepremium_recette=false;
     this.id_utilisateur=0;
     this.listIngredient=[];
-    this.quantiteingredient="";
+    // this.quantiteingredient="";
     this.listGalerie=[];
+    this.listEtape=[];
+    this.listCommentaire=[];
     // this.id_ingredient=0;
 //     this.ingredients=[];
 // this.quantiteingredient='';
