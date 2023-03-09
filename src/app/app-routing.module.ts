@@ -49,7 +49,7 @@ const routes: Routes = [
   {path:'editutilisateur/:id',component:EditUtilisateurComponent},
   // {path:'listutilisateur',component:ListUtilisateurComponent},
   {path:'recette',component:RecetteComponent},
-  {path:'recette/:id',component:ListRecetteComponent},
+  {path:'recette/:id',component:RecetteComponent},
   {path:'addrecette',component:AddRecetteComponent},
   {path:'editrecette/:id',component:EditRecetteComponent},
   {path:'listrecette',component:ListRecetteComponent},

@@ -1,5 +1,7 @@
 import { AfterViewInit, OnInit } from '@angular/core';
 import { Component } from '@angular/core';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { filter } from 'rxjs';
 import { Gallerie } from 'src/app/models/gallerie/gallerie';
 import { Recette } from 'src/app/models/recette/recette';
 import { GallerieService } from 'src/app/services/gallerie/gallerie.service';
@@ -21,14 +23,19 @@ export class LastrecipesComponent implements AfterViewInit{
   constructor (
   private recetteService: RecetteService,
   private gallerieService : GallerieService,
+  private router: Router,
+   private route: ActivatedRoute
   ){}
 
 
   ngAfterViewInit(): void {
     this.getLastRecettes() ;
     this.getGalleries();
-    console.log(this.gallerie);
-    console.log(this.recettes);
+    this.router.events.pipe(filter((event: any) => event instanceof NavigationEnd))
+    .subscribe(() => {
+      // recharger la liste des dernières recettes
+      this.getLastRecettes();
+    });
   }
   getLastRecettes() {
     this.recetteService.findAllRecettes().subscribe(
@@ -44,7 +51,7 @@ export class LastrecipesComponent implements AfterViewInit{
         const lastRecettes = this.recettes.slice(0, 5);
 
        this.lastRecettes= lastRecettes;
-       console.table(this.lastRecettes);
+      //  console.table(this.lastRecettes);
 
 
 
@@ -57,7 +64,7 @@ export class LastrecipesComponent implements AfterViewInit{
    this.gallerieService.findAllGalleries().subscribe(
       (data=>{
         this.gallerie = data;
-console.log(this.gallerie);
+// console.log(this.gallerie);
       }
         )
 

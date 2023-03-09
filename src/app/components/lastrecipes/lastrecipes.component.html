@@ -6,7 +6,7 @@
       <ul class="block-list remove-5th-child-lg"  >
           <li class="single-item" *ngFor="let recette of lastRecettes ; let i=index" >
               <div class="item-img"   >
-                <a *ngFor="let g of gallerie; let i=index" href="#"><img *ngIf="g.id_recette == recette.id_recette" src="http://localhost:8085/image/{{g.galleriefilename}}" alt="Post" style="width:100px"></a>
+                <a *ngFor="let g of gallerie; let i=index"  [routerLink]="['/recette', recette.id_recette]" href="#"><img *ngIf="g.id_recette == recette.id_recette" src="http://localhost:8085/image/{{g.galleriefilename}}" alt="Post" style="width:100px"></a>
                   <div class="count-number">{{i+1}}</div>
               </div>
               <div class="item-content">

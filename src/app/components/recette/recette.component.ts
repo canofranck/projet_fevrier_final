@@ -4,7 +4,7 @@ import { CommentaireService } from './../../services/commentaire/commentaire.ser
 import { Commentaire } from './../../models/commentaire/commentaire';
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { Router } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { RecetteService } from "src/app/services/recette/recette.service";
 import { ListIngredientComponent } from "../ingredients/list-ingredient/list-ingredient.component";
 import { GallerieService } from 'src/app/services/gallerie/gallerie.service';
@@ -29,11 +29,13 @@ declare recetteSelectionnee : Recette;
  declare commentaire:Commentaire;
  declare gallerie : any [];
  public  affichegallerie: any[] = [];
+declare idrecetteselectionner:number;
   constructor (private recetteService : RecetteService,
     private router : Router,
     private commentaireserivce: CommentaireService,
     private formBuilder: FormBuilder,
     private gallerieService : GallerieService,
+    private route: ActivatedRoute,
     ){
 
 }
@@ -49,6 +51,13 @@ ngOnInit(): void {
     id_recette:['',Validators.required],
 
     });
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id !== null) {
+      this.idrecetteselectionner = +id;
+      console.log(id);
+    }
+
+    this.getRecettes();
 
 
 }
@@ -59,8 +68,8 @@ getRecettes() {
         this.recettes = data as any[];
       //  console.table(this.recettes)
       //  const affiche: any[] =this.recettes.slice(4,5)
-       const idrecetteselectionner = 11; // Mettez ici l'id de la recette sélectionnée
-       this.getRecetteById(idrecetteselectionner);
+//const idrecetteselectionner = 11; // Mettez ici l'id de la recette sélectionnée
+       this.getRecetteById(this.idrecetteselectionner);
 
   // console.table(affiche);
 
