@@ -92,7 +92,7 @@
                           <div class="item-figure">
 
 
-                              <ul *ngFor="let g of affichegallerie"><img src="http://localhost:8085/image/{{g.galleriefilename}}" alt=""  ></ul>
+                              <ul ><img  src="http://localhost:8085/image/{{affichegallerie[0].galleriefilename}}" alt=""  ></ul>
 
                               <!-- <img src="./assets/img/product/single-product1.jpg" alt="Product"> -->
 
@@ -146,7 +146,7 @@
                                               </div>
                                               <div class="media-body space-sm">
                                                   <div class="feature-title">VIEWS</div>
-                                                  <div class="feature-sub-title">3,450</div>
+                                                  <div class="feature-sub-title">{{recetteSelectionnee.nbvuerecette}}</div>
                                               </div>
                                           </div>
                                       </div>

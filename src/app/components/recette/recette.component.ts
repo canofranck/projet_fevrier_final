@@ -109,7 +109,7 @@ getRecetteById(idRecette: number) {
   this.recetteSelectionnee = recetteSelectionnee;
   this.listIngredient = this.convertToList(recetteSelectionnee.listIngredient);
   this.listEtape=this.convertToListetape(recetteSelectionnee.listEtape);
-  this.listGalerie=this.convertToListgalerie(recetteSelectionnee.listGalerie);
+ this.listGalerie=this.convertToListgalerie(recetteSelectionnee.listGalerie);
   // console.table(this.listIngredient);
   // console.table(this.listEtape);
   // console.table( this.list)
@@ -139,5 +139,6 @@ convertToListgalerie(listGalerie: { id_gallerie: number, id_recette : number,gal
   }
   return this.affichegallerie;
 }
+
 }
 
