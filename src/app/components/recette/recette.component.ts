@@ -30,6 +30,9 @@ declare recetteSelectionnee : Recette;
  declare gallerie : any [];
  public  affichegallerie: any[] = [];
 declare idrecetteselectionner:number;
+  public recette!: Recette;
+
+  formeditRecette: any;
   constructor (private recetteService : RecetteService,
     private router : Router,
     private commentaireserivce: CommentaireService,
@@ -51,10 +54,28 @@ ngOnInit(): void {
     id_recette:['',Validators.required],
 
     });
+
     const id = this.route.snapshot.paramMap.get('id');
     if (id !== null) {
       this.idrecetteselectionner = +id;
       console.log(id);
+      this.recetteService.editRecette(this.idrecetteselectionner).subscribe(
+        data => {
+          console.log(data)
+         
+          this.recette = data as Recette;
+          console.log(this.recette.nbvuerecette);
+          this.recette.nbvuerecette += 1;
+          console.log(this.recette.nbvuerecette);
+          console.log(this.recette);
+          this.recetteService.updateRecette(this.recette).subscribe(
+            () => {
+
+
+            }
+          )
+        }
+      )
     }
 
     this.getRecettes();
@@ -110,6 +131,7 @@ getRecetteById(idRecette: number) {
   this.listIngredient = this.convertToList(recetteSelectionnee.listIngredient);
   this.listEtape=this.convertToListetape(recetteSelectionnee.listEtape);
  this.listGalerie=this.convertToListgalerie(recetteSelectionnee.listGalerie);
+
   // console.table(this.listIngredient);
   // console.table(this.listEtape);
   // console.table( this.list)
@@ -139,6 +161,7 @@ convertToListgalerie(listGalerie: { id_gallerie: number, id_recette : number,gal
   }
   return this.affichegallerie;
 }
+
 
 }
 
