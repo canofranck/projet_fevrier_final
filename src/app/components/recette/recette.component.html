@@ -68,8 +68,13 @@
                                               <li><span>9<span> / 10</span></span> </li>
                                           </ul>
                                       </li>
-                                      <li class="single-meta"><a href="#"><i class="fas fa-heart"></i><span>02</span>
-                                              Likes</a></li>
+                                      <li class="single-meta">
+                                        <a  (click)="incrementLikes()">
+                                          <i class="fas fa-heart"></i>
+                                          <span *ngIf="likesCount > 0">{{recette.nblike }}</span>
+                                          Likes
+                                        </a>
+                                      </li>
                                   </ul>
                               </div>
                               <div class="col-xl-3 col-12">

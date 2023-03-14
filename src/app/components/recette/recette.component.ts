@@ -31,7 +31,7 @@ declare recetteSelectionnee : Recette;
  public  affichegallerie: any[] = [];
 declare idrecetteselectionner:number;
   public recette!: Recette;
-
+  likesCount = 0;
   formeditRecette: any;
   constructor (private recetteService : RecetteService,
     private router : Router,
@@ -62,12 +62,13 @@ ngOnInit(): void {
       this.recetteService.editRecette(this.idrecetteselectionner).subscribe(
         data => {
           console.log(data)
-         
+
           this.recette = data as Recette;
           console.log(this.recette.nbvuerecette);
           this.recette.nbvuerecette += 1;
           console.log(this.recette.nbvuerecette);
           console.log(this.recette);
+          this.likesCount=this.recette.nblike;
           this.recetteService.updateRecette(this.recette).subscribe(
             () => {
 
@@ -78,7 +79,7 @@ ngOnInit(): void {
       )
     }
 
-    this.getRecettes();
+    // this.getRecettes();
 
 
 }
@@ -161,7 +162,17 @@ convertToListgalerie(listGalerie: { id_gallerie: number, id_recette : number,gal
   }
   return this.affichegallerie;
 }
+incrementLikes() {
+  this.likesCount++;
+  this.recette.nblike=this.likesCount;
+  this.recetteService.updateRecette(this.recette).subscribe(
+    () => {
 
 
+    }
+  )
 }
+}
+
+
 
