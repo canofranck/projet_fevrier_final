@@ -47,7 +47,7 @@ this.getRecettestendance();
       this.recetteService.findAllRecettes().subscribe(
         data => {
           const recettes = data as Recette[];
-          const topRecettes = recettes.sort((a, b) => b.nbvuerecette - a.nbvuerecette).slice(0, 5);
+          const topRecettes = recettes.sort((a, b) => b.nbvuerecette - a.nbvuerecette).slice(0, 3);
           this.topRecettes=topRecettes;
           console.log(topRecettes); // afficher les 5 recettes les plus vues
         },
