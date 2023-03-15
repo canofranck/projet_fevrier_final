@@ -107,7 +107,13 @@ export class PostrecetteComponent implements OnInit{
        recette2.titre_recette=this.form.value.titre_recette;
         recette2.date_recette=new Date();
          recette2. description_recette=this.form.value.description_recette;
-          recette2.categorie_recette=this.form.value.categorie_recette;
+          // recette2.categorie_recette=this.form.value.categorie_recette;
+        // Vérifier que l'élément de formulaire "categorie_recette" existe avant d'utiliser la méthode "get()"
+        if (formValues && formValues.categorie_recette) {
+          recette2.categorie_recette = formValues.categorie_recette;
+        }
+
+
           recette2.niveaudifficulte_recette=this.form.value.niveaudifficulte_recette;
           recette2.tempspreparation_recette=this.form.value.tempspreparation_recette;
           recette2.tempscuisson_recette=this.form.value.tempscuisson_recette;

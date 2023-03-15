@@ -1,3 +1,4 @@
+import { RecetteparcategorieComponent } from './recetteparcategorie/recetteparcategorie.component';
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { AbonnementComponent } from "./components/abonnement/abonnement.component";
@@ -53,6 +54,7 @@ const routes: Routes = [
   {path:'addrecette',component:AddRecetteComponent},
   {path:'editrecette/:id',component:EditRecetteComponent},
   {path:'listrecette',component:ListRecetteComponent},
+  {path:'recettes/:categorie',component:RecetteparcategorieComponent},
 
   {path:'abonnement',component:AbonnementComponent},
   {path:'abonnement/:id',component:ListAbonnementComponent},

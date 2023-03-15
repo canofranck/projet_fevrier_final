@@ -56,7 +56,19 @@
                             </div>
                             <div class="form-group">
                                 <label>Choisi une categorie</label>
-                                <input id="categorie_recette" type="text" placeholder="categorie_recette" formControlName="categorie_recette" data-length="255">
+                                <!-- <input id="categorie_recette" type="text" placeholder="categorie_recette" formControlName="categorie_recette" data-length="255"> -->
+                                <select id="categorie_recette" formControlName="categorie_recette">
+                                  <option value="gateaux">Gâteaux</option>
+                                  <option value="cakes">Cakes</option>
+                                  <option value="tarte">Tarte</option>
+                                  <option value="muffins">Muffins</option>
+                                  <option value="crepes gaufre et beignets">Crêpes, Gaufres et Beignets</option>
+                                  <option value="gateau d anniversaire">Gâteau d'anniversaire</option>
+                                  <option value="flan">Flan</option>
+                                  <option value="creme et mousses">Crème et Mousses</option>
+                                  <option value="biscuit">Biscuit</option>
+                                </select>
+
                                 <!-- <select class="select2" name="filter-by">
                                     <option value="0">Gateau</option>
                                     <option value="1">Tarte et Tartelettes</option>
