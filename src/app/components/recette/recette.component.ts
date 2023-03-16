@@ -33,6 +33,7 @@ declare idrecetteselectionner:number;
   public recette!: Recette;
   likesCount = 0;
   formeditRecette: any;
+  declare commentaireaffiche: any[];
   constructor (private recetteService : RecetteService,
     private router : Router,
     private commentaireserivce: CommentaireService,
@@ -79,7 +80,13 @@ ngOnInit(): void {
       )
     }
 
-    // this.getRecettes();
+    this.commentaireserivce.findAllCommentaire().subscribe(
+      data => {
+        console.log(data);
+        this.commentaireaffiche =data as any ;
+
+      }
+    )
 
 
 }
@@ -108,7 +115,7 @@ create() {
   commentairepost.commentaire=this.formaddCommentaire.value.commentaire;
   commentairepost.datecommentaire=new Date();
   commentairepost.notecommentaire='10';
-  commentairepost.id_recette=1;
+  commentairepost.id_recette= this.idrecetteselectionner;
   commentairepost.id_utilisateur=1;
 
   // console.log(this.formaddCommentaire.value);
