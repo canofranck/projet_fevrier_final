@@ -13,10 +13,15 @@ import { GallerieService } from '../services/gallerie/gallerie.service';
 export class RecetteparcategorieComponent implements OnInit {
   declare recettes : any[];
   declare categorie: string;
-  declare recettesFiltrees: Recette[];
+ declare recettesFiltrees: Recette[];
   declare gallerie :any;
+  public  page: number = 1;
+  public  recettesParPage: number = 1;
+  public nombreRecettesAffichees: number = 3;
+  public debutnombrecetteaffichees: number =0;
 
   constructor(
+
     private recetteService: RecetteService,
      private route: ActivatedRoute,
      private gallerieService : GallerieService,
@@ -55,4 +60,10 @@ export class RecetteparcategorieComponent implements OnInit {
 
      )
    }
+
+  afficherPlus(): void {
+    this.nombreRecettesAffichees += 3;
+    this.debutnombrecetteaffichees +=3;
+
+  }
 }
