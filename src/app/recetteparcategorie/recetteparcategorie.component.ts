@@ -64,6 +64,17 @@ export class RecetteparcategorieComponent implements OnInit {
   afficherPlus(): void {
     this.nombreRecettesAffichees += 3;
     this.debutnombrecetteaffichees +=3;
+    console.log("debut "+this.debutnombrecetteaffichees+"   nbaffiches "+this.nombreRecettesAffichees)
 
+  }
+  afficherMoins(): void {
+    if (this.debutnombrecetteaffichees>=4){
+      this.nombreRecettesAffichees -= 3;
+      this.debutnombrecetteaffichees -=3;
+    }
+    else{this.debutnombrecetteaffichees=0;
+    this.nombreRecettesAffichees=3;
+    }
+    console.log("debut "+this.debutnombrecetteaffichees+"   nbaffiches "+this.nombreRecettesAffichees)
   }
 }
