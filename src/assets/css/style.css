@@ -2335,12 +2335,12 @@ ul {
 }
 
 .adv-search-wrap .btn-group .input-group-btn .btn-adv-serch .icon-minus {
-	display: none;
+	/* display: none; */
 }
 
 .adv-search-wrap .btn-group .input-group-btn .btn-adv-serch.icon-alter .icon-plus {
-	display: none;
-}
+	/* display: none; */
+} 
 
 .adv-search-wrap .btn-group .input-group-btn .btn-adv-serch.icon-alter .icon-minus {
 	display: block;
@@ -2537,7 +2537,7 @@ ul {
 }
 
 .adv-search-wrap .advance-search-form .checkbox input[type="checkbox"] {
-	display: none;
+	/* display: none; */
 }
 
 .adv-search-wrap .advance-search-form .checkbox input[type="checkbox"]:focus+label::before {

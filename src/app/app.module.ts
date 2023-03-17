@@ -51,6 +51,7 @@ import { AddRecetteingredientComponent } from './components/recetteingredient/ad
 import { ListRecetteingredientComponent } from './components/recetteingredient/list-recetteingredient/list-recetteingredient/list-recetteingredient.component';
 import { EditRecetteingredientComponent } from './components/recetteingredient/edit-recetteingredient/edit-recetteingredient/edit-recetteingredient.component';
 import { RecetteparcategorieComponent } from './recetteparcategorie/recetteparcategorie.component';
+import { RecettesearchComponent } from './recettesearch/recettesearch.component';
 
 
 
@@ -100,6 +101,7 @@ import { RecetteparcategorieComponent } from './recetteparcategorie/recetteparca
     ListRecetteingredientComponent,
     EditRecetteingredientComponent,
     RecetteparcategorieComponent,
+    RecettesearchComponent,
 
   ],
   imports: [

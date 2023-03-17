@@ -89,7 +89,8 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled'})],  // permet d afficher la page suivante en remettant l ascenceur de la page en haut
+
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

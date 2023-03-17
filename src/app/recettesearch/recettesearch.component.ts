@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs';
-import { Recette } from 'src/app/models/recette/recette';
-import { RecetteService } from 'src/app/services/recette/recette.service';
+import { Recette } from '../models/recette/recette';
 import { GallerieService } from '../services/gallerie/gallerie.service';
+import { RecetteService } from '../services/recette/recette.service';
 
 @Component({
-  selector: 'app-recetteparcategorie',
-  templateUrl: './recetteparcategorie.component.html',
-  styleUrls: ['./recetteparcategorie.component.css']
+  selector: 'app-recettesearch',
+  templateUrl: './recettesearch.component.html',
+  styleUrls: ['./recettesearch.component.css']
 })
-export class RecetteparcategorieComponent implements OnInit {
+export class RecettesearchComponent implements OnInit {
   declare recettes : any[];
   declare categorie: string;
  declare recettesFiltrees: Recette[];
@@ -83,3 +83,4 @@ export class RecetteparcategorieComponent implements OnInit {
 
   }
 }
+
