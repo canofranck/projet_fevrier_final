@@ -4,7 +4,7 @@
           <div class="col-lg-4 col-md-6 col-sm-12" *ngFor="let item of randomRecettes ; let i=index">
               <div class="product-box-layout4">
                   <div class="item-figure">
-                    <a *ngFor="let g of gallerie; let i=index" href="#"><img *ngIf="g.id_recette == item.id_recette" src="http://localhost:8085/image/{{g.galleriefilename}}" alt="Post" style="width:350px"></a>
+                    <a *ngFor="let g of gallerie; let i=index" [routerLink]="['/recette',item.id_recette]"><img *ngIf="g.id_recette == item.id_recette" src="http://localhost:8085/image/{{g.galleriefilename}}" alt="Post" style="width:350px"></a>
 
                       <a href="single-recipe1.html" class="item-dot">
                           <span></span>
@@ -27,7 +27,7 @@
                           <li><a href="#"><i class="fas fa-clock"></i>{{randomRecettes[i].tempstotal_recette}}</a></li>
                           <li><a href="#"><i class="fas fa-user"></i>by <span>{{randomRecettes[i].id_utilisateur}}</span></a></li>
                           <li><a href="#"><i class="fas fa-heart"></i><span>{{randomRecettes[i].nblike }}</span> Likes</a></li>
-                         
+
                       </ul>
                   </div>
               </div>
