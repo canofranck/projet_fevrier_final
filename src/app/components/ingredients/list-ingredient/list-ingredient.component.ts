@@ -27,6 +27,7 @@ ngOnInit(): void {
 
     this.remove();
   }
+  
 }
 remove() {
 

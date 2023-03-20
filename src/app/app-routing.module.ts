@@ -34,6 +34,7 @@ import { AddUtilisateurComponent } from "./components/utilisateur/add-utilisateu
 import { EditUtilisateurComponent } from "./components/utilisateur/edit-utilisateur/edit-utilisateur.component";
 import { ListUtilisateurComponent } from "./components/utilisateur/list-utilisateur/list-utilisateur.component";
 import { UtilisateurComponent } from "./components/utilisateur/utilisateur.component";
+import { RecettesearchComponent } from './recettesearch/recettesearch.component';
 
 
 
@@ -55,6 +56,7 @@ const routes: Routes = [
   {path:'editrecette/:id',component:EditRecetteComponent},
   {path:'listrecette',component:ListRecetteComponent},
   {path:'recettes/:categorie',component:RecetteparcategorieComponent},
+  {path:'recettesearch',component:RecettesearchComponent},
 
   {path:'abonnement',component:AbonnementComponent},
   {path:'abonnement/:id',component:ListAbonnementComponent},
