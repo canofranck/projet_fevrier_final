@@ -36,8 +36,11 @@ export class RecettesearchComponent implements OnInit {
      ) { }
 
   ngOnInit(): void {
+    // Récupération du paramètre de l'URL
     this.route.paramMap.subscribe(params => {
+       // Récupération de la catégorie depuis l'URL, si aucune catégorie n'est fournie, une chaîne vide est renvoyée
       this.categorie = params.get('categorie')??'';
+      // Récupération de toutes les recettes depuis le service
       this.recetteService.findAllRecettes().subscribe(
         data =>{
           // console.table(data);
@@ -46,6 +49,8 @@ export class RecettesearchComponent implements OnInit {
 
         }
       );
+            // Récupération de tous les ingrédients depuis le service
+
       this.ingredientService.findAllIngredients().subscribe(
         data =>{
           console.table(data);
@@ -53,7 +58,9 @@ export class RecettesearchComponent implements OnInit {
         }
       )
     });
+    // Récupération de toutes les galeries depuis le service
     this.getGalleries();
+    // Abonnement aux événements de navigation de l'URL
     this.router.events.pipe(filter((event: any) => event instanceof NavigationEnd))
     .subscribe(() => {
       console.log('Redirection effectuée !');
@@ -61,6 +68,7 @@ export class RecettesearchComponent implements OnInit {
 
     });
   }
+   // Fonction pour récupérer toutes les galeries depuis le service
   getGalleries() {
     this.gallerieService.findAllGalleries().subscribe(
        (data=>{
@@ -71,13 +79,14 @@ export class RecettesearchComponent implements OnInit {
 
      )
    }
-
+ // Fonction pour afficher plus de recettes sur la page
   afficherPlus(): void {
     this.nombreRecettesAffichees += 6;
     this.debutnombrecetteaffichees +=6;
     console.log("debut "+this.debutnombrecetteaffichees+"   nbaffiches "+this.nombreRecettesAffichees)
 
   }
+   // Fonction pour afficher moins de recettes sur la page
   afficherMoins(): void {
     if (this.debutnombrecetteaffichees>=7){
       this.nombreRecettesAffichees -= 6;
@@ -90,7 +99,7 @@ export class RecettesearchComponent implements OnInit {
   }
 
 
-  
+
  // Fonction de recherche des recettes
 rechercher(searchTerm: string) {
   // On réinitialise le tableau des recettes trouvées à chaque nouvelle recherche

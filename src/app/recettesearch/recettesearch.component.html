@@ -1,4 +1,4 @@
-<form>
+<!-- <form>
   <input type="text" name="searchTerm" [(ngModel)]="searchTerm" placeholder="Recherche">
   <button (click)="rechercher(searchTerm)">Rechercher</button>
 </form>
@@ -7,13 +7,13 @@
   <li *ngFor="let item of recettesTrouvees">
     {{ item.id_recette }}
   </li>
-</ul>
+</ul> -->
 
 <a href="#wrapper" data-type="section-switch" class="scrollup">
   <i class="fas fa-angle-double-up"></i>
 </a>
 
-  <app-header></app-header>
+<app-header></app-header>
 
 
   <section class="recipe-without-sidebar-wrap padding-top-80 padding-bottom-22">
@@ -34,8 +34,8 @@
 
               <input type="text" name="searchTerm" [(ngModel)]="searchTerm" placeholder="Recherche" class="form-control" placeholder="Ingredients ex : farine oeuf chocolat etc...">
               <div class="btn-group">
-                        <button type="submit" (click)="rechercher(searchTerm)">Rechercher</button>
-                        <button type="submit" class="btn-upload"><i class="flaticon-add-plus-button"></i>Enregistrer l'ingredient</button>
+                        <button type="button" (click)="rechercher(searchTerm)"class="btn-upload"><i class="flaticon-add-plus-button"></i>Rechercher</button>
+                        <!-- <button type="submit" class="btn-upload"><i class="flaticon-add-plus-button"></i>Enregistrer l'ingredient</button> -->
                 </div>
               </div>
 
@@ -99,7 +99,7 @@
       </div>
   </footer> -->
   <!-- Footer Area End Here -->
-
+  <app-footer></app-footer>
 <!-- Search Box Start Here -->
 <div id="search" class="search-wrap">
   <button type="button" class="close">×</button>

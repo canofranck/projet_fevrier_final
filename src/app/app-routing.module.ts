@@ -35,7 +35,7 @@ import { EditUtilisateurComponent } from "./components/utilisateur/edit-utilisat
 import { ListUtilisateurComponent } from "./components/utilisateur/list-utilisateur/list-utilisateur.component";
 import { UtilisateurComponent } from "./components/utilisateur/utilisateur.component";
 import { RecettesearchComponent } from './recettesearch/recettesearch.component';
-
+import { RandomComponent } from './components/random/random.component';
 
 
 const routes: Routes = [
@@ -57,6 +57,7 @@ const routes: Routes = [
   {path:'listrecette',component:ListRecetteComponent},
   {path:'recettes/:categorie',component:RecetteparcategorieComponent},
   {path:'recettesearch',component:RecettesearchComponent},
+  {path:'recettelast',component:RandomComponent},
 
   {path:'abonnement',component:AbonnementComponent},
   {path:'abonnement/:id',component:ListAbonnementComponent},
