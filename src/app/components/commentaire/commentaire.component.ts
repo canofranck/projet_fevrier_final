@@ -8,7 +8,7 @@ import { CommentaireService } from 'src/app/services/commentaire/commentaire.ser
   styleUrls: ['./commentaire.component.css']
 })
 export class CommentaireComponent  implements OnInit {
-  declare commentaire: any[];
+  declare commentaire: any[]; // On déclare un tableau vide pour stocker les commentaires
 
   constructor(
     private commentaireService: CommentaireService,
@@ -18,10 +18,12 @@ export class CommentaireComponent  implements OnInit {
      {}
 
   ngOnInit(): void {
-    this.getCommentaires();
+    this.getCommentaires(); // On récupère les commentaires
   }
-
+// Cette méthode utilise le service CommentaireService pour récupérer tous les commentaires
   getCommentaires() {
+    // On appelle la méthode findAllCommentaire() du service et on s'abonne à l'observable qu'elle retourne
+// Lorsque les données sont récupérées, elles sont stockées dans le tableau commentaire
     return this.commentaireService.findAllCommentaire().subscribe(
       data => {
         console.log(data);
@@ -29,13 +31,13 @@ export class CommentaireComponent  implements OnInit {
       }
     )
   }
-
+// Cette méthode utilise le service CommentaireService pour supprimer un commentaire à partir de son identifiant
   deleteCommentaire(id: number) {
-
+// On appelle la méthode deleteCommentaire() du service et on s'abonne à l'observable qu'elle retourne
     this.commentaireService.deleteCommentaire(id).subscribe
       (
         () => {
-
+// Lorsque la suppression est effectuée, on peut effectuer une action (ici, ne rien faire)
         }
       )
 

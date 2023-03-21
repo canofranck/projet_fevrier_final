@@ -28,15 +28,17 @@ export class PopulaireComponent  implements AfterViewInit{
   private route: ActivatedRoute,
   ){}
   ngAfterViewInit(): void {
-    // this.getTopCommentaires();
+
 this.getRecettespopulaire();
     this.getGalleries();
+    // Ecouter les changements de route (redirections)
     this.router.events.pipe(filter((event: any) => event instanceof NavigationEnd))
     .subscribe(() => {
       console.log('Redirection effectuée !');
       // recharger la liste des dernières recettes
       this.getRecettespopulaire();
     });
+    // Vérifier si l'utilisateur arrive depuis la page d'accueil
     const url = this.route.snapshot.url.join('/');
 this. isCalledFromHome = url.includes('recettepopulaire');
 
@@ -49,13 +51,16 @@ console.log(this.isCalledFromHome);
     getRecettespopulaire() {
       this.recetteService.findAllRecettes().subscribe(
         data => {
+           // Convertir la réponse en un tableau d'objets de type Recette
           const recettes = data as Recette[];
+           // Tri des recettes par ordre décroissant du nombre de likes, prendre les 3 premières
           const popRecettes = recettes.sort((a, b) => b.nblike - a.nblike).slice(0, 3);
+          // Stocker les 3 recettes les plus aimées dans la variable popRecettes
           this.popRecettes=popRecettes;
-          console.log(popRecettes); // afficher les 5 recettes les plus vues
+
         },
         error => {
-          console.log(error);
+          console.log(error); // Afficher une erreur éventuelle dans la console en cas de problème avec la requête
         }
       );
     }
@@ -64,7 +69,7 @@ console.log(this.isCalledFromHome);
     getGalleries() {
       this.gallerieService.findAllGalleries().subscribe(
          (data=>{
-           this.gallerie = data;
+           this.gallerie = data; // Stocker les données de la réponse dans la variable gallerie
     console.log(this.gallerie);
          }
            )

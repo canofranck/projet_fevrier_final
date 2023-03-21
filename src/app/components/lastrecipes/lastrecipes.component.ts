@@ -29,14 +29,16 @@ export class LastrecipesComponent implements AfterViewInit{
 
 
   ngAfterViewInit(): void {
-    this.getLastRecettes() ;
-    this.getGalleries();
+    this.getLastRecettes() ;  // Appel à la méthode pour récupérer les dernières recettes
+    this.getGalleries(); // Appel à la méthode pour récupérer les galeries d'images
+    // Abonnement à l'événement de fin de navigation pour recharger la liste des dernières recettes
     this.router.events.pipe(filter((event: any) => event instanceof NavigationEnd))
     .subscribe(() => {
       // recharger la liste des dernières recettes
       this.getLastRecettes();
     });
   }
+    // Méthode pour récupérer les dernières recettes
   getLastRecettes() {
     this.recetteService.findAllRecettes().subscribe(
       data => {
@@ -59,12 +61,12 @@ export class LastrecipesComponent implements AfterViewInit{
       }
     );
   }
-
+ // Méthode pour récupérer les galeries d'images
   getGalleries() {
    this.gallerieService.findAllGalleries().subscribe(
       (data=>{
         this.gallerie = data;
-// console.log(this.gallerie);
+
       }
         )
 

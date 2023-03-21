@@ -11,10 +11,11 @@ import { RecetteService } from 'src/app/services/recette/recette.service';
 })
 export class ListGallerieComponent implements OnInit{
 
-  declare gallerie : any [];
-  declare form: FormGroup;
-  declare recettes : any ;
-  @Input() idrecetteencours! : number;
+  declare gallerie : any []; // Tableau contenant les galeries
+  declare form: FormGroup;  // Formulaire de création de la gallerie
+  declare recettes : any ; // Tableau contenant les recettes
+  @Input() idrecetteencours! : number; // Identifiant de la recette en cours
+
   constructor(
     private gallerieService : GallerieService,
     private router : Router,
@@ -23,6 +24,7 @@ export class ListGallerieComponent implements OnInit{
   ){
   }
   ngOnInit(): void {
+    // Initialisation du formulaire
     this.form = this.formBuilder.group({
       gallerie_id:  ['', Validators.required],
       id_recette:  [''],
@@ -30,21 +32,25 @@ export class ListGallerieComponent implements OnInit{
 	    id_utilisateur :  ['', Validators.required],
 
     })
+     // Récupération des galeries existantes
     this.getGalleries();
+     // Récupération de toutes les recettes
     this.recetteService.findAllRecettes().subscribe(
       data =>{
-      // console.log(data);
+        // Stockage des recettes dans un tableau
           this.recettes = Object.values(data);
+           // Tri des recettes par date décroissante
          this.recettes.sort((a: { date_recette: number; }, b: { date_recette: number; }) => (a.date_recette < b.date_recette ? 1 : -1))
-          // console.log(this.recettes);
+        // Sélection de la première recette de la liste
          this.idrecetteencours=this.recettes[0].id_recette;
-        //  console.log(" id recette avant le set"+this.idrecetteencours);
+        // Stockage de l'identifiant de la recette en cours
           this.recetteService.setIdRecetteEncours( this.idrecetteencours);
-          // console.log(" id recette en cours dans affiche ingredient"+this.idrecetteencours);
+
         }
     )
 
   }
+   // Fonction permettant de récupérer toutes les galeries existantes
   getGalleries() {
     return this.gallerieService.findAllGalleries().subscribe(
       (data=>{

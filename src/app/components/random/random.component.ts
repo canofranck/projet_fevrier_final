@@ -17,22 +17,20 @@ export class RandomComponent implements  OnInit{
   isCalledFromHome = false;  // Booléen pour vérifier si l'utilisateur arrive depuis la page d'accueil
 
   constructor (
-  private recetteService: RecetteService,
-  private gallerieService : GallerieService,
-  private route: ActivatedRoute
+  private recetteService: RecetteService, // Service pour les recettes
+  private gallerieService : GallerieService, // Service pour les galeries
+  private route: ActivatedRoute  // ActivatedRoute pour obtenir des informations sur l'URL actuelle
   ){}
    ngOnInit(): void {
 
-// this.getRecettes();
+
 this.getRecettesRandom(); // Récupération des recettes aléatoires
 this.getGalleries(); // Récupération de la galerie
-
+// Vérifie si l'utilisateur arrive depuis la page d'accueil
 const url = this.route.snapshot.url.join('/');
 this. isCalledFromHome = url.includes('recetterandom');
-
-console.log(this.isCalledFromHome);
    }
-
+ // Récupération de toutes les recettes
    getRecettes() {
     this.recetteService.findAllRecettes().subscribe(
       data =>{
@@ -43,20 +41,25 @@ console.log(this.isCalledFromHome);
     );
 
 }
+// Récupération des recettes aléatoires
 getRecettesRandom() {
   this.recetteService.findAllRecettes().subscribe(
     data => {
-      this.recettes = data as any[];
-      //  console.table(this.recettes);
-      let randomRecettes: any[] = [];
+      this.recettes = data as any[];       // Stockage des données dans le tableau "recettes"
+      let randomRecettes: any[] = []; // Initialisation d'un tableau vide pour stocker les recettes aléatoires
       //  La boucle while sélectionne une recette aléatoire et vérifie si elle n'a pas encore été ajoutée au tableau randomRecettes
       while (randomRecettes.length < 3) {
+         // Génération d'un index aléatoire entre 0 et la longueur du tableau "recettes"
         let randomIndex = Math.floor(Math.random() * this.recettes.length);
+        // Sélection de la recette correspondante à l'index aléatoire
         let randomRecette = this.recettes[randomIndex];
+        // Vérification si la recette sélectionnée n'a pas encore été ajoutée au tableau "randomRecettes"
         if (!randomRecettes.includes(randomRecette)) {
+           // Ajout de la recette au tableau "randomRecettes"
           randomRecettes.push(randomRecette);
         }
       }
+      // Stockage du tableau "randomRecettes" dans la variable "randomRecettes"
       this.randomRecettes = randomRecettes;
 
 
@@ -64,6 +67,7 @@ getRecettesRandom() {
   );
 
 }
+// Récupération de la galerie
 getGalleries() {
   this.gallerieService.findAllGalleries().subscribe(
      (data=>{

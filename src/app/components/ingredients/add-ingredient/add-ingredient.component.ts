@@ -15,7 +15,7 @@ export class AddIngredientComponent implements OnInit{
   declare formaddIngredient: FormGroup;
   declare ingredient:Ingredients
  declare listeingredient : any ;
-  // declare tableauingredient: [];
+
   nouveau_tableau: any[] = [];
  @Input() addingree!: boolean;
  @Input() idrecetteencours! : number;
@@ -35,6 +35,7 @@ export class AddIngredientComponent implements OnInit{
 
   ){}
     ngOnInit(): void {
+      // Initialisation du formulaire
         this.formaddIngredient = this.formBuilder.group({
           id_ingredient:['',Validators.required],
           id_recette:['',Validators.required],
@@ -42,39 +43,30 @@ export class AddIngredientComponent implements OnInit{
 
 
         })
+        // Récupération des recettes
         this.recetteService.findAllRecettes().subscribe(
           data =>{
-          // console.log(data);
+              // La variable "recettes" est initialisée avec les données renvoyées, qui sont sous forme d'objet.
               this.recettes = Object.values(data);
+                // Les recettes sont triées par ordre décroissant en fonction de leur date de création.
              this.recettes.sort((a: { date_recette: number; }, b: { date_recette: number; }) => (a.date_recette < b.date_recette ? 1 : -1))
-              // console.log(this.recettes);
+               // La variable "idrecetteencours" est initialisée avec l'ID de la première recette (la plus récente).
              this.idrecetteencours=this.recettes[0].id_recette;
-            //  console.log(" id recette avant le set"+this.idrecetteencours);
+               // La méthode "setIdRecetteEncours" du service "recetteService" est appelée pour initialiser l'ID de la recette en cours.
               this.recetteService.setIdRecetteEncours( this.idrecetteencours);
-              // console.log(" id recette en cours dans affiche ingredient"+this.idrecetteencours);
+
             }
         )
-        this.ingredientService.findAllIngredients().subscribe(
-          data =>{
-            // console.table(data);
+        // // Récupération des ingrédients
+        // this.ingredientService.findAllIngredients().subscribe(
+        //   data =>{
 
-              // this.listeingredient.sort((a: { id_recette: number; }, b: { id_recette: number; }) => (a.id_recette = this.idrecetteencours ? 1 : -1))
-          }
-        )
-      //  console.table ( this.listeingredient)
+        //   }
+        // )
 
-    //    for (let element of this.listeingredient) {
-    //     if (element[2] == this.idrecetteencours) {
-    //         this.nouveau_tableau.push([element[1],element[2],element[3]]);
-    //     }
-    // }
-    // console.table(this.nouveau_tableau)
-        // this.idrecetteencours= this.recetteService.getIdRecetteEncours();
-        // console.log("testtttttttt" + this.idrecetteencours);
-        // console.log(" addingred true or false : "+this.addingree)
   }
   create(){
-    // console.log(" id recette debut de create "+this.idrecetteencours)
+ // Création d'un nouvel ingrédient à partir du formulaire
     const formValues = this.formaddIngredient.value;
     const ingredient = new Ingredients();
 
@@ -82,17 +74,18 @@ export class AddIngredientComponent implements OnInit{
       ingredient.id_recette = this.idrecetteencours;
       ingredient.quantiteingredient = this.formaddIngredient.value.quantiteingredient;
       this.nouveau_tableau.push(ingredient);
-      // console.table(this.nouveau_tableau);
-      // console.log(" id recette avant submit"+this.idrecetteencours)
+    // Sauvegarde de l'ingrédient dans la base de données
+
       this.ingredientService.saveIngredient(ingredient).subscribe((response) => {
-        // console.log(response);
+         // Réinitialisation du formulaire après la sauvegarde
           this.formaddIngredient.reset();
-          // this.nouveau_tableau.push(response as Ingredients);
-        //
+
+
 
        });
        }
        cahingre(){
+         // Émission d'un événement pour cacher le composant
         this.cacheringre.emit({});
        }
       }
