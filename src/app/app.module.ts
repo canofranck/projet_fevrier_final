@@ -50,8 +50,8 @@ import { UploadFileComponent } from './components/upload-file/upload-file.compon
 import { AddRecetteingredientComponent } from './components/recetteingredient/add-recetteingredient/add-recetteingredient/add-recetteingredient.component';
 import { ListRecetteingredientComponent } from './components/recetteingredient/list-recetteingredient/list-recetteingredient/list-recetteingredient.component';
 import { EditRecetteingredientComponent } from './components/recetteingredient/edit-recetteingredient/edit-recetteingredient/edit-recetteingredient.component';
-import { RecetteparcategorieComponent } from './recetteparcategorie/recetteparcategorie.component';
-import { RecettesearchComponent } from './recettesearch/recettesearch.component';
+import { RecetteparcategorieComponent } from './components/recetteparcategorie/recetteparcategorie.component';
+import { RecettesearchComponent } from './components/recettesearch/recettesearch.component';
 
 
 
@@ -96,7 +96,7 @@ import { RecettesearchComponent } from './recettesearch/recettesearch.component'
     ListIngredientComponent,
     UploadFileComponent,
     ListGallerieComponent,
-   
+
     AddRecetteingredientComponent,
     ListRecetteingredientComponent,
     EditRecetteingredientComponent,

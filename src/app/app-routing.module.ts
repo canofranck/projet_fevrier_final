@@ -1,4 +1,4 @@
-import { RecetteparcategorieComponent } from './recetteparcategorie/recetteparcategorie.component';
+import { RecetteparcategorieComponent } from './components/recetteparcategorie/recetteparcategorie.component';
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { AbonnementComponent } from "./components/abonnement/abonnement.component";
@@ -34,8 +34,10 @@ import { AddUtilisateurComponent } from "./components/utilisateur/add-utilisateu
 import { EditUtilisateurComponent } from "./components/utilisateur/edit-utilisateur/edit-utilisateur.component";
 import { ListUtilisateurComponent } from "./components/utilisateur/list-utilisateur/list-utilisateur.component";
 import { UtilisateurComponent } from "./components/utilisateur/utilisateur.component";
-import { RecettesearchComponent } from './recettesearch/recettesearch.component';
+import { RecettesearchComponent } from './components/recettesearch/recettesearch.component';
 import { RandomComponent } from './components/random/random.component';
+import { PopulaireComponent } from './components/populaire/populaire.component';
+import { TendanceComponent } from './components/tendance/tendance.component';
 
 
 const routes: Routes = [
@@ -58,6 +60,9 @@ const routes: Routes = [
   {path:'recettes/:categorie',component:RecetteparcategorieComponent},
   {path:'recettesearch',component:RecettesearchComponent},
   {path:'recettelast',component:RandomComponent},
+  {path:'recettepopulaire',component:PopulaireComponent},
+  {path:'recettetendance',component:TendanceComponent},
+  {path:'recetterandom',component:RandomComponent},
 
   {path:'abonnement',component:AbonnementComponent},
   {path:'abonnement/:id',component:ListAbonnementComponent},

@@ -1,3 +1,4 @@
+<app-header *ngIf="isCalledFromHome"></app-header>
 <section class="padding-bottom-45">
   <div class="container">
       <div class="row gutters-40">
@@ -43,6 +44,17 @@
                   </div>
               </div>
           </div>
+          <div class="col-lg-4 sidebar-widget-area sidebar-break-md">
+
+            <app-lastrecipes></app-lastrecipes>
+            <div class="widget ranna-box-padding">
+                <div class="widget-ad">
+                    <a href="#"><img src="assets/img/figure/figure3.jpg" alt="Ad" class="img-fluid"></a>
                 </div>
+            </div>
+            <app-categorie></app-categorie>
+        </div>
+                </div>
+
   </div>
 </section>

@@ -18,7 +18,7 @@ export class PopulaireComponent  implements AfterViewInit{
   public i: number = 0;
   declare gallerie :any;
   popRecettes: any[]=[];
-
+  isCalledFromHome = false;  // Booléen pour vérifier si l'utilisateur arrive depuis la page d'accueil
 
   constructor (
   private recetteService: RecetteService,
@@ -37,6 +37,10 @@ this.getRecettespopulaire();
       // recharger la liste des dernières recettes
       this.getRecettespopulaire();
     });
+    const url = this.route.snapshot.url.join('/');
+this. isCalledFromHome = url.includes('recettepopulaire');
+
+console.log(this.isCalledFromHome);
        }
 
 

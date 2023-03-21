@@ -13,42 +13,47 @@ import { RecetteService } from 'src/app/services/recette/recette.service';
 })
 export class UploadFileComponent implements OnInit{
 
-  file!: File ; // valeur defini qui ne peut pas etre nul
+  file!: File ; // Fichier sélectionné par l'utilisateur valeur defini qui ne peut pas etre nul
 
-  fileDetails!: any;
-  fileUris: Array<string> = []; // stock les urls des images
+  fileDetails!: any; // Détails du fichier sélectionné
+  fileUris: Array<string> = []; // // Tableau des URL des fichiers enregistrés dans la galerie
   declare form : FormGroup;
-  declare gallerie : any [];
-  declare recettes : any ;
-  @Input() idrecetteencours! : number;
+  declare gallerie : any [];// Tableau des galeries d'images
+  declare recettes : any ; // Tableau des recettes
+  @Input() idrecetteencours! : number;  // ID de la recette en cours
   constructor(
-    private fileUploadService: FileUploadServiceService,
-    private router: Router,
-    private formBuilder : FormBuilder,
-    private gallerieService : GallerieService,
-    private recetteService: RecetteService,
+    private fileUploadService: FileUploadServiceService,// Service pour upload le fichier image
+    private router: Router,// Service pour la navigation
+    private formBuilder : FormBuilder,// Service pour la création de formulaire
+    private gallerieService : GallerieService,// Service pour la gestion des galeries d'images
+    private recetteService: RecetteService,// Service pour la gestion des recettes
     ) {
 
     }
 
   ngOnInit(): void {
+     // Récupération de toutes les recettes
     this.recetteService.findAllRecettes().subscribe(
       data =>{
       // console.log(data);
-          this.recettes = Object.values(data);
+          this.recettes = Object.values(data); // Récupération des recettes
+           // Tri des recettes par date décroissante
          this.recettes.sort((a: { date_recette: number; }, b: { date_recette: number; }) => (a.date_recette < b.date_recette ? 1 : -1))
           // console.log(this.recettes);
+           // Récupération de l'ID de la première recette et définition de l'ID de la recette en cours
          this.idrecetteencours=this.recettes[0].id_recette;
         //  console.log(" id recette avant le set"+this.idrecetteencours);
+         // Définition de l'ID de la recette en cours dans le service de gestion des recettes
           this.recetteService.setIdRecetteEncours( this.idrecetteencours);
           // console.log(" id recette en cours dans affiche ingredient"+this.idrecetteencours);
         }
     )
+     // Création du formulaire pour upload le fichier image
     this.form = this.formBuilder.group({
-      gallerie_id:  ['', Validators.required],
-      id_recette:  [this.idrecetteencours],
-	    galleriefilename:  ['', Validators.required],
-	    id_utilisateur :  ['1', Validators.required],
+      gallerie_id:  ['', Validators.required], // Sélection obligatoire d'une galerie d'images
+      id_recette:  [this.idrecetteencours], // ID de la recette en cours
+	    galleriefilename:  ['', Validators.required],// Nom de fichier obligatoire
+	    id_utilisateur :  ['1', Validators.required],// ID de l'utilisateur pour upload le fichier
 
     })
     this.getGalleries();

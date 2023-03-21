@@ -20,7 +20,7 @@ export class TendanceComponent implements OnInit {
   public i: number = 0;
   declare gallerie :any;
   topRecettes: any[]=[];
-
+  isCalledFromHome = false;  // Booléen pour vérifier si l'utilisateur arrive depuis la page d'accueil
 
   constructor (
   private recetteService: RecetteService,
@@ -38,6 +38,10 @@ this.getRecettestendance();
       // recharger la liste des dernières recettes
 
     });
+    const url = this.route.snapshot.url.join('/');
+    this. isCalledFromHome = url.includes('recettetendance');
+
+    console.log(this.isCalledFromHome);
        }
 
 

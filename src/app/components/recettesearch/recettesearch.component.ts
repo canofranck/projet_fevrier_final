@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs';
-import { Recette } from '../models/recette/recette';
-import { GallerieService } from '../services/gallerie/gallerie.service';
-import { IngredientsService } from '../services/ingredients/ingredients.service';
-import { RecetteService } from '../services/recette/recette.service';
+import { Recette } from '../../models/recette/recette';
+import { GallerieService } from '../../services/gallerie/gallerie.service';
+import { IngredientsService } from '../../services/ingredients/ingredients.service';
+import { RecetteService } from '../../services/recette/recette.service';
 
 @Component({
   selector: 'app-recettesearch',

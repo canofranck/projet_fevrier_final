@@ -3,7 +3,7 @@ import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs';
 import { Recette } from 'src/app/models/recette/recette';
 import { RecetteService } from 'src/app/services/recette/recette.service';
-import { GallerieService } from '../services/gallerie/gallerie.service';
+import { GallerieService } from '../../services/gallerie/gallerie.service';
 
 @Component({
   selector: 'app-recetteparcategorie',

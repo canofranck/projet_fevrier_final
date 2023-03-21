@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { GallerieService } from 'src/app/services/gallerie/gallerie.service';
 import { RecetteService } from 'src/app/services/recette/recette.service';
 
@@ -9,19 +10,27 @@ import { RecetteService } from 'src/app/services/recette/recette.service';
 })
 export class RandomComponent implements  OnInit{
 
-  recettes: any[] = [];
-  public randomRecettes: any[] = [];
-  public i: number = 0;
-  declare gallerie :any;
+  recettes: any[] = []; // Tableau pour stocker toutes les recettes
+  public randomRecettes: any[] = []; // Tableau pour stocker les recettes aléatoires
+  public i: number = 0;  // Variable pour le compteur
+  declare gallerie :any; // Déclaration de la galerie
+  isCalledFromHome = false;  // Booléen pour vérifier si l'utilisateur arrive depuis la page d'accueil
+
   constructor (
   private recetteService: RecetteService,
   private gallerieService : GallerieService,
+  private route: ActivatedRoute
   ){}
    ngOnInit(): void {
 
 // this.getRecettes();
-this.getRecettesRandom();
-this.getGalleries();
+this.getRecettesRandom(); // Récupération des recettes aléatoires
+this.getGalleries(); // Récupération de la galerie
+
+const url = this.route.snapshot.url.join('/');
+this. isCalledFromHome = url.includes('recetterandom');
+
+console.log(this.isCalledFromHome);
    }
 
    getRecettes() {
