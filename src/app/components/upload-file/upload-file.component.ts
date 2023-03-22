@@ -21,6 +21,7 @@ export class UploadFileComponent implements OnInit{
   declare gallerie : any [];// Tableau des galeries d'images
   declare recettes : any ; // Tableau des recettes
   @Input() idrecetteencours! : number;  // ID de la recette en cours
+
   constructor(
     private fileUploadService: FileUploadServiceService,// Service pour upload le fichier image
     private router: Router,// Service pour la navigation
@@ -43,6 +44,7 @@ export class UploadFileComponent implements OnInit{
            // Récupération de l'ID de la première recette et définition de l'ID de la recette en cours
          this.idrecetteencours=this.recettes[0].id_recette;
         //  console.log(" id recette avant le set"+this.idrecetteencours);
+        this.idrecetteencours+=1;
          // Définition de l'ID de la recette en cours dans le service de gestion des recettes
           this.recetteService.setIdRecetteEncours( this.idrecetteencours);
           // console.log(" id recette en cours dans affiche ingredient"+this.idrecetteencours);
@@ -61,6 +63,7 @@ export class UploadFileComponent implements OnInit{
 
   selectFile(event: any) {
     this.file = event.target.files.item(0);
+    this.uploadFile();
   }
  // envoi les informations de l image  à la BD
   uploadFile() {
@@ -101,7 +104,9 @@ export class UploadFileComponent implements OnInit{
     return this.gallerieService.findAllGalleries().subscribe(
       (data=>{
         this.gallerie = data as any [];
-        console.log(this.gallerie)
+        // this.idrecetteencours=68;
+        // console.log(this.idrecetteencours);
+        // console.log(this.gallerie)
       }
         )
 

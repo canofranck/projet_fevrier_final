@@ -160,6 +160,10 @@
                           </div>
                           <!-- <p class="item-description">{{recetteSelectionnee.description_recette}}</p>
                           <p class="item-description"></p> -->
+                          <div class="section-heading heading-dark">
+                            <h2 class="item-heading">Description</h2>
+                        </div>
+                        <p class="section-paragraph">{{recetteSelectionnee.description_recette}}</p>
                           <div class="making-elements-wrap">
                               <div class="row">
                                   <div class="col-xl-6 col-12">
@@ -218,14 +222,14 @@
                           </div>
 
                           <div class="direction-wrap-layout1">
-                              <div class="section-heading heading-dark">
+                              <!-- <div class="section-heading heading-dark">
                                   <h2 class="item-heading">Description</h2>
                               </div>
-                              <p class="section-paragraph">{{recetteSelectionnee.description_recette}}</p>
+                              <p class="section-paragraph">{{recetteSelectionnee.description_recette}}</p> -->
 
                               <div class="direction-box-layout1"  *ngFor="let e of affichetape">
                                   <div class="item-figure">
-                                      <img src="./assets/img/figure/direction1.jpg" alt="DIRECTIONS">
+                                      <!-- <img src="./assets/img/figure/direction1.jpg" alt="DIRECTIONS"> -->
                                   </div>
                                   <div class="item-content">
                                       <div class="serial-number">etape : {{ e.numero_etape}}</div>

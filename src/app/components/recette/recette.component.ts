@@ -127,7 +127,8 @@ create() {
       // this.router.navigate(['postrecette']);
     }
    );
-
+   this.commentaireaffiche.push(commentairepost);
+   this.formaddCommentaire.reset();
 }
 getRecetteById(idRecette: number) {
   const recetteSelectionnee = this.recettes.find(recette => recette.id_recette === idRecette);
