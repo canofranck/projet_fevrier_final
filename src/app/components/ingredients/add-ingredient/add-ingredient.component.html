@@ -25,25 +25,24 @@
 </ul>
 <br>
 <br> -->
-<H2 class="text-center">Ajouter un ingredient</H2>
-<div class="container border">
+<!-- <H2 class="text-center">Ajouter un ingredient</H2>
+<div class="container border"> -->
     <form [formGroup]="formaddIngredient" (ngSubmit)="create()">
-        <div class="form-group">
-            <!-- <div class="input-field col s16">
-                <label for="id_ingredient">id_ingredient</label>
-                <input type="text" name="" id="id_ingredient" class="form-control" formControlName="id_ingredient" data-length="255">
-            </div> -->
-            <!-- <div class="input-field col s16">
-              <label for="id_recette">id_recette</label>
-              <input type="text" name="" id="id_recette" class="form-control" formControlName="id_recette" data-length="255">
-           </div> -->
+      <div class="row no-gutters">
+        <div class="col-6">
+                 <div class="form-group additional-input-box icon-right">
 
-            <div class="input-field col s16">
+                <input type="text" id="quantiteingredient" placeholder="quantite ingredient" class="form-control" formControlName="quantiteingredient" data-length="255">
+            </div>
+        </div>
+        </div>
+        <!-- <div class="form-group">
+                       <div class="input-field col s16">
                 <label for="quantiteingredient">quantiteingredient</label>
                 <input type="text" name="" id="quantiteingredient" class="form-control" formControlName="quantiteingredient" data-length="255">
             </div>
-            </div>
-        <!-- <button class="btn btn-success" type="submit">Soumettre</button> -->
+            </div> -->
+
 
             <div class="col-12">
         <button type="submit" class="btn-upload"><i class="flaticon-add-plus-button"></i>Enregistrer l'ingredient</button>
@@ -53,14 +52,23 @@
       </form>
 
     <br>
-    <ul class="list-group list-group-light">
-      <ng-container *ngFor="let item of nouveau_tableau">
-        <li>{{item.quantiteingredient}}</li>
-      </ng-container>
-    </ul>
+
+      <div *ngFor="let item of nouveau_tableau" style="text-align:center">
+        <div class="col-6">
+
+              <div class="form-group additional-input-box icon-left" >
+
+        <ul >{{item.quantiteingredient}}</ul>
+
+        </div>
+        </div>
 
 
-</div>
+      </div>
+
+
+
+<!-- </div> -->
 
 
 
@@ -68,5 +76,5 @@
 
 
 
-{{formaddIngredient.value | json}}
+
 

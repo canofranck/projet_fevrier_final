@@ -52,6 +52,7 @@ export class AddIngredientComponent implements OnInit{
              this.recettes.sort((a: { date_recette: number; }, b: { date_recette: number; }) => (a.date_recette < b.date_recette ? 1 : -1))
                // La variable "idrecetteencours" est initialisée avec l'ID de la première recette (la plus récente).
              this.idrecetteencours=this.recettes[0].id_recette;
+             this.idrecetteencours+=1;
                // La méthode "setIdRecetteEncours" du service "recetteService" est appelée pour initialiser l'ID de la recette en cours.
               this.recetteService.setIdRecetteEncours( this.idrecetteencours);
 

@@ -24,8 +24,8 @@
 </ul> -->
 <br>
 <br>
-<H2 class="text-center">Créer une etape</H2>
-<div class="container border">
+
+
     <form [formGroup]="formaddEtape" (ngSubmit)="create()">
         <div class="form-group">
             <!-- <div class="input-field col s16">
@@ -36,18 +36,26 @@
               <label for="id_recette"> id_recette</label>
               <input type="text" name="" id="id_recette" class="form-control" formControlName="id_recette" data-length="100">
             </div> -->
-            <div class="input-field col s16">
-                <label for="numero_etape">numero_etape</label>
-                <input type="text" name="" id="numero_etape" class="form-control" formControlName="numero_etape" data-length="100">
+            <div class="row no-gutters">
+              <div class="col-6">
+                       <div class="form-group additional-input-box icon-right">
+
+                <input type="text" name="" placeholder="numero_etape" id="numero_etape" class="form-control" formControlName="numero_etape" data-length="100">
             </div>
-            <div class="input-field col s16">
-              <label for="instructions_etape">instructions_etape</label>
-              <input type="text" name="" id="instructions_etape" class="form-control" formControlName="instructions_etape" data-length="100">
             </div>
-            <div class="input-field col s16">
+            </div>
+            <div class="row no-gutters">
+              <div class="col-6">
+                       <div class="form-group additional-input-box icon-right">
+
+              <input type="text" name="" placeholder="instructions_etape" id="instructions_etape" class="form-control" formControlName="instructions_etape" data-length="255">
+            </div>
+            </div>
+            </div>
+            <!-- <div class="input-field col s16">
               <label for="image_etape">image_etape</label>
               <input type="text" name="" id="image_etape" class="form-control" formControlName="image_etape" data-length="100">
-            </div>
+            </div> -->
 
 
         </div>
@@ -55,6 +63,17 @@
         <!-- <button class="btn btn-success" type="submit">Soumettre</button> -->
         <button type="button" class="btn-upload" (click)="cachertape()" ><i class="flaticon-add-plus-button"></i>Liste des etapes fini</button>
     </form>
-    <br>
-</div>
-{{formaddEtape.value | json}}
+    <div *ngFor="let item of listeEtape" style="text-align:center">
+      <div class="col-6">
+
+            <div class="form-group additional-input-box icon-left" >
+
+      <ul >{{"Etape n°"+item.numero_etape+"   :  "+item.instructions_etape}}</ul>
+
+      </div>
+      </div>
+
+
+    </div>
+
+

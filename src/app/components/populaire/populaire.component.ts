@@ -69,7 +69,7 @@ console.log(this.isCalledFromHome);
     getGalleries() {
       this.gallerieService.findAllGalleries().subscribe(
          (data=>{
-           this.gallerie = data; // Stocker les données de la réponse dans la variable gallerie
+           this.gallerie = data; // Stocker les données de la réponse dans la variable galleried
     console.log(this.gallerie);
          }
            )

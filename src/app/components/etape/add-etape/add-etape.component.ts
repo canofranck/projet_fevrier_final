@@ -17,6 +17,7 @@ export class AddEtapeComponent implements OnInit{
   @Input()  afficheretape!: boolean; // variable en entrée, pour savoir s'il faut afficher les étapes ou non
   @Output() // variable en sortie, pour cacher les étapes après création
    public   cacheretape:EventEmitter<any> =new EventEmitter<any>();
+   listeEtape: any[] = [];
   constructor (
     private etapeService: EtapeService, // service pour les étapes
     private recetteService : RecetteService, // service pour les recettes
@@ -30,7 +31,7 @@ export class AddEtapeComponent implements OnInit{
           id_etape:['',Validators.required],
           numero_etape:['',Validators.required],
           instructions_etape:['',Validators.required],
-          image_etape:['',Validators.required],
+          // image_etape:['',Validators.required],
           id_recette:['',Validators.required],
 
         })
@@ -56,9 +57,9 @@ export class AddEtapeComponent implements OnInit{
     // Récupération des valeurs du formulaire
       etape.numero_etape = this.formaddEtape.value.numero_etape;
      etape.instructions_etape =  this.formaddEtape.value.instructions_etape;
-      etape.image_etape = this.formaddEtape.value.image_etape;
+      // etape.image_etape = this.formaddEtape.value.image_etape;
       etape.id_recette=this.idrecetteencours;
-
+      this.listeEtape.push(etape);
       // Envoi de la requête de création d'une étape
       this.etapeService.saveEtape(etape).subscribe((response) => {
        // Réinitialisation du formulaire après création d'une étape

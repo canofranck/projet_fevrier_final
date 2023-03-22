@@ -15,11 +15,11 @@ import { RecetteService } from 'src/app/services/recette/recette.service';
 export class LastrecipesComponent implements AfterViewInit{
   recettes!: Recette[];
   lastRecettes :  Recette[]=[];
-  // public listGalerie : { id_gallerie: number, id_recette : number,galleriefilename : string, id_utilisateur: number}[]= [];
+
   public i: number = 0;
   declare gallerie :any;
-  // public  affichegallerie: any[] = [];
-  // declare recetteSelectionnee : Recette;
+  isCalledFromHome = false;  // Booléen pour vérifier si l'utilisateur arrive depuis la page d'accueil
+
   constructor (
   private recetteService: RecetteService,
   private gallerieService : GallerieService,
@@ -37,6 +37,11 @@ export class LastrecipesComponent implements AfterViewInit{
       // recharger la liste des dernières recettes
       this.getLastRecettes();
     });
+     // Vérifier si l'utilisateur arrive depuis la page d'accueil
+     const url = this.route.snapshot.url.join('/');
+     this. isCalledFromHome = url.includes('recettelast');
+
+     console.log(this.isCalledFromHome);
   }
     // Méthode pour récupérer les dernières recettes
   getLastRecettes() {

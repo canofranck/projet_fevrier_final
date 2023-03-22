@@ -38,7 +38,7 @@ import { RecettesearchComponent } from './components/recettesearch/recettesearch
 import { RandomComponent } from './components/random/random.component';
 import { PopulaireComponent } from './components/populaire/populaire.component';
 import { TendanceComponent } from './components/tendance/tendance.component';
-
+import { LastrecipesComponent } from './components/lastrecipes/lastrecipes.component';
 
 const routes: Routes = [
   {path:'',component:HomeComponent  },
@@ -59,7 +59,7 @@ const routes: Routes = [
   {path:'listrecette',component:ListRecetteComponent},
   {path:'recettes/:categorie',component:RecetteparcategorieComponent},
   {path:'recettesearch',component:RecettesearchComponent},
-  {path:'recettelast',component:RandomComponent},
+  {path:'recettelast',component:LastrecipesComponent},
   {path:'recettepopulaire',component:PopulaireComponent},
   {path:'recettetendance',component:TendanceComponent},
   {path:'recetterandom',component:RandomComponent},
