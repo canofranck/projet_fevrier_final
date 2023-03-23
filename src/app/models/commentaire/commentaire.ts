@@ -5,7 +5,7 @@ export class Commentaire {
 id_commentaire:number;
 commentaire:string;
 imagecommentaire:string;
-notecommentaire:string;
+notecommentaire:number;
 datecommentaire:Date;
 id_utilisateur:number;
 // utilisateur?: Utilisateur | null =null;
@@ -15,7 +15,7 @@ constructor (){
 this.id_commentaire=0;
 this.commentaire="";
 this.imagecommentaire="";
-this.notecommentaire="";
+this.notecommentaire=0;
 this.datecommentaire=new Date;
 this.id_utilisateur=0;
 //  this.utilisateur=null;

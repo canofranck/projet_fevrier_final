@@ -8,6 +8,9 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { RecetteService } from "src/app/services/recette/recette.service";
 import { ListIngredientComponent } from "../ingredients/list-ingredient/list-ingredient.component";
 import { GallerieService } from 'src/app/services/gallerie/gallerie.service';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgModule } from '@angular/core';
+import {  EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-recette',
@@ -34,7 +37,13 @@ declare idrecetteselectionner:number;
   likesCount = 0;
   formeditRecette: any;
   declare commentaireaffiche: any[];
-  selectedStars: number =0;
+
+  currentRate: number= 0;
+  public moyenne:number = 0;
+
+  public commentairesRecette: any[]=[];
+
+  @Output() maNote = new EventEmitter<number>()
   constructor (private recetteService : RecetteService,
     private router : Router,
     private commentaireserivce: CommentaireService,
@@ -85,40 +94,33 @@ ngOnInit(): void {
       data => {
         console.log(data);
         this.commentaireaffiche =data as any ;
+        this.calculerNoteMoyenne();
 
       }
     )
-    const stars = document.querySelectorAll('.star');
-    let selectedStars = 0;
-
-    // Ajouter un écouteur d'événement sur chaque étoile
-    stars.forEach((star, index) => {
-      star.addEventListener('click', () => {
-        // Mettre à jour le nombre d'étoiles sélectionnées
-        selectedStars = index + 1;
-this.selectedStars=selectedStars
-       // Ajouter la classe "selected" à chaque étoile sélectionnée
-    stars.forEach((s, i) => {
-      if (i < selectedStars) {
-        s.classList.add('selected');
-      } else {
-        s.classList.remove('selected');
-      }
-    });
-  });
-});
- this.convertStarsToNote()
-
 
 
 
 }
- convertStarsToNote(): number {
-  // Transformer le nombre d'étoiles en note
-  const note = this.selectedStars;
-  console.log(note);
-  return note;
+calculerNoteMoyenne() {
+  let commentairesRecette = this.commentaireaffiche.filter(commentaire => commentaire.id_recette === this.idrecetteselectionner);
+  let totalNotes = commentairesRecette.reduce((sum, commentaire) => sum + commentaire.notecommentaire, 0);
+this.commentairesRecette=commentairesRecette
+  this.moyenne = totalNotes / commentairesRecette.length;
+  console.log(this.moyenne);
+
 }
+
+onRateChange(rate: number) {
+  this.currentRate = rate;
+  this.maNote.emit(this.currentRate);
+
+
+}
+
+
+
+
 getRecettes() {
   this.recetteService.findAllRecettes().subscribe(
     data =>{
@@ -145,7 +147,7 @@ create() {
 
   commentairepost.commentaire=this.formaddCommentaire.value.commentaire;
   commentairepost.datecommentaire=new Date();
-  commentairepost.notecommentaire='10';
+  commentairepost.notecommentaire=this.currentRate;
   commentairepost.id_recette= this.idrecetteselectionner;
   commentairepost.id_utilisateur=1;
 
@@ -160,6 +162,7 @@ create() {
    );
    this.commentaireaffiche.push(commentairepost);
    this.formaddCommentaire.reset();
+   this.currentRate = 0;
 }
 getRecetteById(idRecette: number) {
   const recetteSelectionnee = this.recettes.find(recette => recette.id_recette === idRecette);

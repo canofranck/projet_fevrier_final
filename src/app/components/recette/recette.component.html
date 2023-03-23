@@ -1,6 +1,4 @@
 
-
-
 <body>
 
   <!--[if lte IE 9]>
@@ -19,7 +17,9 @@
   <div id="wrapper" class="wrapper">
       <!-- Header Area Start Here -->
       <app-header></app-header>
-      
+
+
+
       <!-- Header Area End Here -->
       <!-- Inne Page Banner Area Start Here -->
 
@@ -403,17 +403,12 @@
                                   <h2 class="item-heading">RECIPE REVIEWS</h2>
                               </div>
                               <div class="avarage-rating-wrap">
-                                  <div class="avarage-rating">Avarage Rating:
-                                      <span class="rating-icon-wrap">
-                                          <i class="fas fa-star"></i>
-                                          <i class="fas fa-star"></i>
-                                          <i class="fas fa-star"></i>
-                                          <i class="fas fa-star"></i>
-                                          <i class="fas fa-star"></i>
-                                      </span>
-                                      <span class="rating-number">(5)</span>
+                                  <div class="avarage-rating">Note Moyenne :
+                                    <ngb-rating [(rate)]="moyenne" [readonly]="true" [max]="5"></ngb-rating>
+                                    &nbsp;
+                                      <span class="rating-number">{{ moyenne | number: '1.2-2' }}</span>
                                   </div>
-                                  <div class="total-reviews">Total Reviews:<span class="review-number">(02)</span></div>
+                                  <div class="total-reviews">ombre total de note: <span class="review-number">{{commentairesRecette.length}}</span></div>
                               </div>
                               <ul>
                                   <li class="reviews-single-item">
@@ -463,13 +458,18 @@
                               </div>
                               <div class="rate-wrapper">
                                   <div class="rate-label">Rating</div>
-                                  <div class="rate">
+
+                                    <ngb-rating [(rate)]="currentRate" [max]="5"  size="large" (rateChange)="onRateChange($event)"></ngb-rating>
+                                    <p>La note de cette recette est {{currentRate}}/5</p>
+
+
+
+                                      <!-- <div class="rate-item"><i class="fa fa-star" aria-hidden="true"></i></div>
                                       <div class="rate-item"><i class="fa fa-star" aria-hidden="true"></i></div>
                                       <div class="rate-item"><i class="fa fa-star" aria-hidden="true"></i></div>
                                       <div class="rate-item"><i class="fa fa-star" aria-hidden="true"></i></div>
-                                      <div class="rate-item"><i class="fa fa-star" aria-hidden="true"></i></div>
-                                      <div class="rate-item"><i class="fa fa-star" aria-hidden="true"></i></div>
-                                  </div>
+                                      <div class="rate-item"><i class="fa fa-star" aria-hidden="true"></i></div> -->
+
                               </div>
                                <form class="leave-form-box" [formGroup]="formaddCommentaire" (ngSubmit)="create() " action="post">
                                   <div class="row">

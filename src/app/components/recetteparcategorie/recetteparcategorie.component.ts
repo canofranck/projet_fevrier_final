@@ -62,8 +62,9 @@ export class RecetteparcategorieComponent implements OnInit {
    }
 
   afficherPlus(): void {
+    if ( this.nombreRecettesAffichees<this.recettesFiltrees.length){
     this.nombreRecettesAffichees += 6;
-    this.debutnombrecetteaffichees +=6;
+    this.debutnombrecetteaffichees +=6;}
     console.log("debut "+this.debutnombrecetteaffichees+"   nbaffiches "+this.nombreRecettesAffichees)
 
   }

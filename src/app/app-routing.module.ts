@@ -39,6 +39,7 @@ import { RandomComponent } from './components/random/random.component';
 import { PopulaireComponent } from './components/populaire/populaire.component';
 import { TendanceComponent } from './components/tendance/tendance.component';
 import { LastrecipesComponent } from './components/lastrecipes/lastrecipes.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 const routes: Routes = [
   {path:'',component:HomeComponent  },
@@ -97,8 +98,8 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled'})],  // permet d afficher la page suivante en remettant l ascenceur de la page en haut
+  imports: [RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled'}) , NgbModule],  // permet d afficher la page suivante en remettant l ascenceur de la page en haut
 
-  exports: [RouterModule]
+  exports: [RouterModule,NgbModule]
 })
 export class AppRoutingModule { }
