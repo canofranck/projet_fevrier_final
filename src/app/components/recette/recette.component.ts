@@ -34,6 +34,7 @@ declare idrecetteselectionner:number;
   likesCount = 0;
   formeditRecette: any;
   declare commentaireaffiche: any[];
+  selectedStars: number =0;
   constructor (private recetteService : RecetteService,
     private router : Router,
     private commentaireserivce: CommentaireService,
@@ -87,8 +88,36 @@ ngOnInit(): void {
 
       }
     )
+    const stars = document.querySelectorAll('.star');
+    let selectedStars = 0;
+
+    // Ajouter un écouteur d'événement sur chaque étoile
+    stars.forEach((star, index) => {
+      star.addEventListener('click', () => {
+        // Mettre à jour le nombre d'étoiles sélectionnées
+        selectedStars = index + 1;
+this.selectedStars=selectedStars
+       // Ajouter la classe "selected" à chaque étoile sélectionnée
+    stars.forEach((s, i) => {
+      if (i < selectedStars) {
+        s.classList.add('selected');
+      } else {
+        s.classList.remove('selected');
+      }
+    });
+  });
+});
+ this.convertStarsToNote()
 
 
+
+
+}
+ convertStarsToNote(): number {
+  // Transformer le nombre d'étoiles en note
+  const note = this.selectedStars;
+  console.log(note);
+  return note;
 }
 getRecettes() {
   this.recetteService.findAllRecettes().subscribe(
@@ -106,6 +135,8 @@ getRecettes() {
   );
 
 }
+
+
 create() {
 
   const formValues = this.formaddCommentaire.value;

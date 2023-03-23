@@ -81,8 +81,10 @@ export class RecettesearchComponent implements OnInit {
    }
  // Fonction pour afficher plus de recettes sur la page
   afficherPlus(): void {
+
+    if ( this.nombreRecettesAffichees<this.recettesTrouvees.length){
     this.nombreRecettesAffichees += 6;
-    this.debutnombrecetteaffichees +=6;
+    this.debutnombrecetteaffichees +=6;}
     console.log("debut "+this.debutnombrecetteaffichees+"   nbaffiches "+this.nombreRecettesAffichees)
 
   }
