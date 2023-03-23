@@ -163,6 +163,9 @@ create() {
    this.commentaireaffiche.push(commentairepost);
    this.formaddCommentaire.reset();
    this.currentRate = 0;
+  this.calculerNoteMoyenne()
+
+
 }
 getRecetteById(idRecette: number) {
   const recetteSelectionnee = this.recettes.find(recette => recette.id_recette === idRecette);

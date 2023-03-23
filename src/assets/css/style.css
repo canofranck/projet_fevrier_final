@@ -2191,7 +2191,7 @@ ul {
 
 .inner-page-banner {
 	display: block;
-	padding: 9.2rem 0;
+	padding:  2rem 0;;
 	position: relative;
 }
 
@@ -11848,3 +11848,5 @@ footer.ranna-bg-dark {
 .footer-menu ul li:last-child:after {
 	display: none;
 }
+
+

@@ -50,10 +50,10 @@
                   <div class="col-lg-8">
                       <div class="single-recipe-layout1">
 
-                          <div class="ctg-name">{{recetteSelectionnee.titre_recette}}</div>
+                          <div class="ctg-name">{{recetteSelectionnee.categorie_recette}}</div>
 
 
-                          <h2 class="item-title">{{recetteSelectionnee.categorie_recette}}</h2>
+                          <h2 class="item-title">{{recetteSelectionnee.titre_recette}}</h2>
                           <div class="row mb-4">
                               <div class="col-xl-9 col-12">
                                   <ul class="entry-meta">
@@ -400,15 +400,14 @@
                           </div> -->
                           <div class="recipe-reviews">
                               <div class="section-heading heading-dark">
-                                  <h2 class="item-heading">RECIPE REVIEWS</h2>
+                                  <h2 class="item-heading">Avis commentaire et note sur la recette</h2>
                               </div>
                               <div class="avarage-rating-wrap">
                                   <div class="avarage-rating">Note Moyenne :
-                                    <ngb-rating [(rate)]="moyenne" [readonly]="true" [max]="5"></ngb-rating>
-                                    &nbsp;
+                                    <ngb-rating [(rate)]="moyenne" [readonly]="true" [max]="5" class="custom-size custom-color"></ngb-rating>
                                       <span class="rating-number">{{ moyenne | number: '1.2-2' }}</span>
                                   </div>
-                                  <div class="total-reviews">ombre total de note: <span class="review-number">{{commentairesRecette.length}}</span></div>
+                                  <div class="total-reviews">Nombre total de note: <span class="review-number">{{commentairesRecette.length}}</span></div>
                               </div>
                               <ul>
                                   <li class="reviews-single-item">
@@ -454,28 +453,22 @@
                           </div>
                           <div class="leave-review">
                               <div class="section-heading heading-dark">
-                                  <h2 class="item-heading">LEAVE A REVIEW</h2>
+                                  <h2 class="item-heading">Laissez un commentaire et/ou une note a la recette </h2>
                               </div>
-                              <div class="rate-wrapper">
-                                  <div class="rate-label">Rating</div>
+                                     <div class="rate-wrapper">
 
-                                    <ngb-rating [(rate)]="currentRate" [max]="5"  size="large" (rateChange)="onRateChange($event)"></ngb-rating>
-                                    <p>La note de cette recette est {{currentRate}}/5</p>
+                                  <div class="custom-rating" >note
 
-
-
-                                      <!-- <div class="rate-item"><i class="fa fa-star" aria-hidden="true"></i></div>
-                                      <div class="rate-item"><i class="fa fa-star" aria-hidden="true"></i></div>
-                                      <div class="rate-item"><i class="fa fa-star" aria-hidden="true"></i></div>
-                                      <div class="rate-item"><i class="fa fa-star" aria-hidden="true"></i></div>
-                                      <div class="rate-item"><i class="fa fa-star" aria-hidden="true"></i></div> -->
-
+                                    <ngb-rating [(rate)]="currentRate" [max]="5"  (rateChange)="onRateChange($event)" class="custom-size custom-color"></ngb-rating>
+                                    &nbsp; &nbsp;&nbsp;
+                                    <span>La note donnée à cette recette est {{currentRate}}/5</span>
+                                  </div>
                               </div>
                                <form class="leave-form-box" [formGroup]="formaddCommentaire" (ngSubmit)="create() " action="post">
                                   <div class="row">
                                       <div class="col-12 form-group">
-                                          <label>Comment :</label>
-                                          <textarea placeholder="" class="textarea form-control" name="commentaire" id="commentaire" formControlName="commentaire" data-length="255" rows="7"
+                                          <label>Votre commentaire :</label>
+                                          <textarea placeholder="Selectionnez avec la souris les etoiles pour mettre une note et/ou ecrivez ici vos commentaires sur la recette" class="textarea form-control" name="commentaire" id="commentaire" formControlName="commentaire" data-length="255" rows="7"
                                               cols="20" data-error="Message field is required" required></textarea>
                                           <div class="help-block with-errors"></div>
                                       </div>

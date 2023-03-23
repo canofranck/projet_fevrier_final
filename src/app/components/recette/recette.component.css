@@ -1,8 +1,28 @@
-::ng-deep .ngb-rating .sr-only {
-  color: transparent;
-}
 
-::ng-deep .ngb-rating .star {
-  color: #ffc107; /* Changer cette valeur pour modifier la couleur des étoiles */
-}
+
+
+
+
+ .custom-size {
+  font-size: 24px;
+  }
+
+  .custom-color {
+  color: rgba(255, 183, 0, 0.999);
+  }
+  .custom-rating .star {
+    vertical-align: middle;
+  }
+
+  .rate-wrapper p {
+    margin-top: 0;
+  }
+
+
+
+
+
+
+
+
 
