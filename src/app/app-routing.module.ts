@@ -1,3 +1,4 @@
+import { RecettebynoteComponent } from './components/recettebynote/recettebynote.component';
 import { RecetteparcategorieComponent } from './components/recetteparcategorie/recetteparcategorie.component';
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
@@ -64,6 +65,7 @@ const routes: Routes = [
   {path:'recettepopulaire',component:PopulaireComponent},
   {path:'recettetendance',component:TendanceComponent},
   {path:'recetterandom',component:RandomComponent},
+  {path:'recettebynote',component:RecettebynoteComponent},
 
   {path:'abonnement',component:AbonnementComponent},
   {path:'abonnement/:id',component:ListAbonnementComponent},

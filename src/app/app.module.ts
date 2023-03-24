@@ -52,6 +52,7 @@ import { ListRecetteingredientComponent } from './components/recetteingredient/l
 import { EditRecetteingredientComponent } from './components/recetteingredient/edit-recetteingredient/edit-recetteingredient/edit-recetteingredient.component';
 import { RecetteparcategorieComponent } from './components/recetteparcategorie/recetteparcategorie.component';
 import { RecettesearchComponent } from './components/recettesearch/recettesearch.component';
+import { RecettebynoteComponent } from './components/recettebynote/recettebynote.component';
 
 
 
@@ -102,6 +103,7 @@ import { RecettesearchComponent } from './components/recettesearch/recettesearch
     EditRecetteingredientComponent,
     RecetteparcategorieComponent,
     RecettesearchComponent,
+    RecettebynoteComponent,
 
   ],
   imports: [
