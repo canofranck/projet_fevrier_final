@@ -21,6 +21,7 @@ export class TendanceComponent implements OnInit {
   declare gallerie :any; // Déclaration de la variable gallerie
   topRecettes: any[]=[]; // Tableau pour stocker les 3 recettes les plus vues
   isCalledFromHome = false;  // Booléen pour vérifier si l'utilisateur arrive depuis la page d'accueil
+  public moyenne:number=0;
 
   constructor (
   private recetteService: RecetteService, // Service pour les recettes

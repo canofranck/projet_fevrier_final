@@ -24,12 +24,10 @@
                               <span class="sub-title">{{recette.categorie_recette}}</span>
                               <!-- <h2 class="item-title"><a href="single-recipe1.html">{{recette.titre_recette}}</a></h2> -->
                               <ul class="item-rating">
-                                  <li class="star-fill"><i class="fas fa-star"></i></li>
-                                  <li class="star-fill"><i class="fas fa-star"></i></li>
-                                  <li class="star-fill"><i class="fas fa-star"></i></li>
-                                  <li class="star-fill"><i class="fas fa-star"></i></li>
-                                  <li class="star-empty"><i class="fas fa-star"></i></li>
-                                  <!-- <li><span>{{topCommentaire[i].notecommentaire}}</span> </li> -->
+                                <ng-container *ngIf="recette.notemoyenne">  <!--au cas ou la valeur est null-->
+                                  <ngb-rating [(rate)]="recette.notemoyenne" [readonly]="true" [max]="5" class="custom-size custom-color"></ngb-rating>
+                                  <span class="rating-number">{{ recette.notemoyenne | number: '1.2-2' }}</span>
+                                </ng-container>
                               </ul>
                               <p>{{recette.description_recette}}</p>
                               <ul class="entry-meta">
