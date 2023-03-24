@@ -19,7 +19,7 @@ export class PopulaireComponent  implements AfterViewInit{
   declare gallerie :any;
   popRecettes: any[]=[];
   isCalledFromHome = false;  // Booléen pour vérifier si l'utilisateur arrive depuis la page d'accueil
-
+  public moyenne:number=0;
   constructor (
   private recetteService: RecetteService,
   private gallerieService : GallerieService,
