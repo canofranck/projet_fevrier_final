@@ -49,7 +49,7 @@ getRecettesRandom() {
       this.recettes = data as any[];       // Stockage des données dans le tableau "recettes"
       let randomRecettes: any[] = []; // Initialisation d'un tableau vide pour stocker les recettes aléatoires
       //  La boucle while sélectionne une recette aléatoire et vérifie si elle n'a pas encore été ajoutée au tableau randomRecettes
-      while (randomRecettes.length < 3) {
+      while (randomRecettes.length < 6) {
          // Génération d'un index aléatoire entre 0 et la longueur du tableau "recettes"
         let randomIndex = Math.floor(Math.random() * this.recettes.length);
         // Sélection de la recette correspondante à l'index aléatoire
