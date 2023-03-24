@@ -17,12 +17,10 @@
                       <span class="sub-title">{{randomRecettes[i].categorie_recette }}</span>
                       <h3 class="item-title"><a href="single-recipe1.html">{{randomRecettes[i].titre_recette}}</a></h3>
                       <ul class="item-rating">
-                          <li class="star-fill"><i class="fas fa-star"></i></li>
-                          <li class="star-fill"><i class="fas fa-star"></i></li>
-                          <li class="star-fill"><i class="fas fa-star"></i></li>
-                          <li class="star-fill"><i class="fas fa-star"></i></li>
-                          <li class="star-empty"><i class="fas fa-star"></i></li>
-                          <li><span>9<span> / 10</span></span> </li>
+                        <ng-container *ngIf="item.notemoyenne">  <!--au cas ou la valeur est null-->
+                          <ngb-rating [(rate)]="item.notemoyenne" [readonly]="true" [max]="5" class="custom-size custom-color"></ngb-rating>
+                          <span class="rating-number">{{ item.notemoyenne | number: '1.2-2' }}</span>
+                        </ng-container>
                       </ul>
                       <ul class="entry-meta">
                           <li><a href="#"><i class="fas fa-clock"></i>{{randomRecettes[i].tempstotal_recette}}</a></li>
@@ -32,7 +30,7 @@
                       </ul>
                   </div>
               </div>
-              
+
           </div>
 
 

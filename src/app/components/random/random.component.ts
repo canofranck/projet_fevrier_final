@@ -15,6 +15,7 @@ export class RandomComponent implements  OnInit{
   public i: number = 0;  // Variable pour le compteur
   declare gallerie :any; // Déclaration de la galerie
   isCalledFromHome = false;  // Booléen pour vérifier si l'utilisateur arrive depuis la page d'accueil
+  public moyenne:number=0;
 
   constructor (
   private recetteService: RecetteService, // Service pour les recettes
