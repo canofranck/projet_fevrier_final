@@ -15,6 +15,7 @@ export class Recette {
    public recettepremium_recette:boolean;
    public nbvuerecette:number;
    public nblike:number;
+   public notemoyenne:number;
    public id_utilisateur:number;
    public listIngredient:[];
    public listGalerie:[];
@@ -38,6 +39,7 @@ export class Recette {
     this.recettepremium_recette=false;
     this.nbvuerecette=0;
     this.nblike=0;
+    this.notemoyenne=0;
     this.id_utilisateur=0;
     this.listIngredient=[];
     // this.quantiteingredient="";

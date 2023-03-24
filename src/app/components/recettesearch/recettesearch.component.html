@@ -25,7 +25,7 @@
                   <div class="product-box-layout1" >
                       <figure class="item-figure">
                         <a *ngFor="let g of gallerie" [routerLink]="['/recette',recette.id_recette]">
-                          <img *ngIf="g.id_recette == recette.id_recette" src="http://localhost:8085/image/{{g.galleriefilename}}" alt="Post" style="width:150px">
+                          <img *ngIf="g.id_recette == recette.id_recette" src="http://localhost:8085/image/{{g.galleriefilename}}" alt="Post" style="width:250px">
                         </a>
 
                          </figure>
@@ -33,12 +33,19 @@
                           <span class="sub-title">{{recette.categorie_recette}}</span>
                           <h3 class="item-title"><a href="single-recipe1.html">{{recette.titre_recette}}</a></h3>
                           <ul class="item-rating">
-                              <li class="star-fill"><i class="fas fa-star"></i></li>
+                            <ng-container *ngIf="recette.notemoyenne">  <!--au cas ou la valeur est null-->
+                              <ngb-rating [(rate)]="recette.notemoyenne" [readonly]="true" [max]="5" class="custom-size custom-color"></ngb-rating>
+                              <span class="rating-number">{{ recette.notemoyenne | number: '1.2-2' }}</span>
+                            </ng-container>
+
+
+
+                              <!-- <li class="star-fill"><i class="fas fa-star"></i></li>
                               <li class="star-fill"><i class="fas fa-star"></i></li>
                               <li class="star-fill"><i class="fas fa-star"></i></li>
                               <li class="star-fill"><i class="fas fa-star"></i></li>
                               <li class="star-empty"><i class="fas fa-star"></i></li>
-                              <li><span>9<span> / 10</span></span> </li>
+                              <li><span>9<span> / 10</span></span> </li> -->
                           </ul>
                           <p>{{recette.description_recette}}</p>
                           <ul class="entry-meta">

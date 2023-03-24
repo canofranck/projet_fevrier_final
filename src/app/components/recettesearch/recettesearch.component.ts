@@ -24,7 +24,7 @@ export class RecettesearchComponent implements OnInit {
   declare ingredients : any ;
   recettesTrouvees: any[] = [];
   declare searchTerm: string;
-
+public moyenne:number=0;
   constructor(
 
     private recetteService: RecetteService,

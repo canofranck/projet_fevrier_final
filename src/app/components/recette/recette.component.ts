@@ -63,6 +63,7 @@ ngOnInit(): void {
     datecommentaire:['',Validators.required],
     id_utilisateur:['',Validators.required],
     id_recette:['',Validators.required],
+    notemoyenne:[''],
 
     });
 
@@ -96,6 +97,7 @@ ngOnInit(): void {
         this.commentaireaffiche =data as any ;
         this.calculerNoteMoyenne();
 
+
       }
     )
 
@@ -108,7 +110,13 @@ calculerNoteMoyenne() {
 this.commentairesRecette=commentairesRecette
   this.moyenne = totalNotes / commentairesRecette.length;
   console.log(this.moyenne);
+  this.recette.notemoyenne=this.moyenne;
+  this.recetteService.updateRecette(this.recette).subscribe(
+    () => {
 
+
+    }
+  )
 }
 
 onRateChange(rate: number) {
@@ -166,6 +174,7 @@ create() {
   this.calculerNoteMoyenne()
 
 
+
 }
 getRecetteById(idRecette: number) {
   const recetteSelectionnee = this.recettes.find(recette => recette.id_recette === idRecette);
@@ -218,6 +227,5 @@ incrementLikes() {
   )
 }
 }
-
 
 

@@ -1,5 +1,7 @@
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { of } from 'rxjs';
+import { concatMap } from 'rxjs/operators';
 import { Commentaire } from 'src/app/models/commentaire/commentaire';
 
 import { AppSettings } from 'src/app/settings/app.settings';
@@ -8,6 +10,8 @@ import { AppSettings } from 'src/app/settings/app.settings';
   providedIn: 'root'
 })
 export class CommentaireService {
+
+
   httpOptions = {
     headers : new HttpHeaders({'Content-Type':'application/json'})
   }
@@ -15,6 +19,7 @@ export class CommentaireService {
   }
   findAllCommentaire(){
     return this.http.get(AppSettings.APP_URL + '/commentaire');
+
   }
   saveCommentaire(commentaire:Commentaire){
 
@@ -30,5 +35,11 @@ export class CommentaireService {
   deleteCommentaire(id:number){
     return this.http.delete(AppSettings.APP_URL + '/commentaires/'+id);
   }
+
+
+
+  
+
+
 
 }
